@@ -6,7 +6,7 @@
 /*   By: psegura- <psegura-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/05 20:40:30 by psegura-          #+#    #+#             */
-/*   Updated: 2023/01/05 22:49:06 by psegura-         ###   ########.fr       */
+/*   Updated: 2023/01/06 20:31:29 by psegura-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,9 +71,11 @@ Opendir, Readdir, Closedir
 */
 # include <dirent.h>
 
-#endif
-
-/*
-readline, rl_clear_history, rl_on_new_line,
-rl_replace_line, rl_redisplay, add_history,
+/*_______READLINE____
+Readline, Rl_clear_history, Rl_on_new_line
+Rl_replace_line, Rl_redisplay, Add_history
 */
+# include <readline/readline.h>
+# include <readline/history.h>
+
+#endif

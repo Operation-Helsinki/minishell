@@ -1,16 +1,39 @@
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    Makefile                                           :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: psegura- <psegura-@student.42.fr>          +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2023/01/06 16:12:27 by psegura-          #+#    #+#              #
+#    Updated: 2023/01/06 20:03:15 by psegura-         ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
+
+### Colors ###
+
+RESET	=	\033c
+GREEN	=	\033[1;32m
+RED		=	\033[0;31m
+CYAN	=	\033[0;36m
+WHITE	=	\033[0m
+
 NAME = minishell
 
 SRCS =							\
 		srcs/main.c				\
+								\
+		srcs/readline/readline.c\
 
 OBJS = $(SRCS:.c=.o)
 
 CC = gcc
 CFLAGS =  -Wall -Wextra -Werror -I inc -g3
+CFLAGS += -lreadline
 
 $(NAME): $(OBJS)
 	@$(CC) $(CFLAGS) $(OBJS) -o $(NAME)
-	@echo "❄️ Operation Helsinki Completed ❄️"
+	@echo "$(CYAN) ❄️ Operation Helsinki Completed ❄️"
 	
 all: $(NAME)
 
