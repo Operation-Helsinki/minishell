@@ -6,7 +6,7 @@
 /*   By: psegura- <psegura-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/07 18:16:07 by psegura-          #+#    #+#             */
-/*   Updated: 2023/01/07 19:39:39 by psegura-         ###   ########.fr       */
+/*   Updated: 2023/01/08 16:46:25 by psegura-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,8 @@ void	ft_print_header(void)
 	char	*line;
 
 	fd = open("srcs/intro/intro.txt", O_RDONLY);
+	if (fd < 0)
+		return ;
 	line = "HOLA";
 	printf("\033c");
 	while (line)
