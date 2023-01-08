@@ -6,7 +6,7 @@
 #    By: psegura- <psegura-@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/06 16:12:27 by psegura-          #+#    #+#              #
-#    Updated: 2023/01/08 14:19:33 by psegura-         ###   ########.fr        #
+#    Updated: 2023/01/08 15:30:59 by psegura-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -30,16 +30,17 @@ SRCS =							\
 OBJS = $(SRCS:.c=.o)
 
 %.o:%.c
-	$(CC) $(LFLAGS) $(CFLAGS) -c $< -o $@
+	$(CC) $(LFLAGS) -c $< -o $@
 	
 LIB = libft/libft.a
 
 CC = gcc
 CFLAGS =  -Wall -Wextra -Werror
-CFLAGS += -I inc
-CFLAGS += -I libft
+
 
 LFLAGS = -lreadline
+LFLAGS += -I inc
+LFLAGS += -I libft
 
 $(NAME): $(OBJS)
 	@make -C libft
