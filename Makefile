@@ -6,7 +6,7 @@
 #    By: psegura- <psegura-@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/06 16:12:27 by psegura-          #+#    #+#              #
-#    Updated: 2023/01/06 20:03:15 by psegura-         ###   ########.fr        #
+#    Updated: 2023/01/08 14:19:33 by psegura-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,23 +24,36 @@ SRCS =							\
 		srcs/main.c				\
 								\
 		srcs/readline/readline.c\
+								\
+		srcs/intro/intro.c		\
 
 OBJS = $(SRCS:.c=.o)
 
+%.o:%.c
+	$(CC) $(LFLAGS) $(CFLAGS) -c $< -o $@
+	
+LIB = libft/libft.a
+
 CC = gcc
-CFLAGS =  -Wall -Wextra -Werror -I inc -g3
-CFLAGS += -lreadline
+CFLAGS =  -Wall -Wextra -Werror
+CFLAGS += -I inc
+CFLAGS += -I libft
+
+LFLAGS = -lreadline
 
 $(NAME): $(OBJS)
-	@$(CC) $(CFLAGS) $(OBJS) -o $(NAME)
+	@make -C libft
+	@$(CC) $(CFLAGS) $(OBJS) $(LIB) -o $(NAME)
 	@echo "$(CYAN) ❄️ Operation Helsinki Completed ❄️"
 	
 all: $(NAME)
 
 clean:
+	make clean -C libft
 	@rm -rf $(OBJS)
 
 fclean: clean
+	make fclean -C libft
 	@rm -f $(NAME)
 
 re: fclean all

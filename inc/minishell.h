@@ -6,7 +6,7 @@
 /*   By: psegura- <psegura-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/05 20:41:16 by psegura-          #+#    #+#             */
-/*   Updated: 2023/01/05 21:19:27 by psegura-         ###   ########.fr       */
+/*   Updated: 2023/01/07 18:40:26 by psegura-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,5 +19,8 @@
 
 /*__LIBFT__*/
 # include "../libft/inc/libft.h"
+
+void	ft_print_header(void);
+void	readline_create(void);
 
 #endif
