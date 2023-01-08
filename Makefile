@@ -6,7 +6,7 @@
 #    By: psegura- <psegura-@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/06 16:12:27 by psegura-          #+#    #+#              #
-#    Updated: 2023/01/08 15:30:59 by psegura-         ###   ########.fr        #
+#    Updated: 2023/01/08 16:45:22 by psegura-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -29,22 +29,17 @@ SRCS =							\
 
 OBJS = $(SRCS:.c=.o)
 
-%.o:%.c
-	$(CC) $(LFLAGS) -c $< -o $@
-	
 LIB = libft/libft.a
 
 CC = gcc
-CFLAGS =  -Wall -Wextra -Werror
-
-
-LFLAGS = -lreadline
-LFLAGS += -I inc
-LFLAGS += -I libft
+CFLAGS	 = #-Wall -Wextra -Werror
+CFLAGS	+= -I inc
+CFLAGS	+= -I libft
+READLINE = -lreadline
 
 $(NAME): $(OBJS)
 	@make -C libft
-	@$(CC) $(CFLAGS) $(OBJS) $(LIB) -o $(NAME)
+	@$(CC) $(CFLAGS) $(OBJS) $(LIB) $(READLINE) -o $(NAME)
 	@echo "$(CYAN) ❄️ Operation Helsinki Completed ❄️"
 	
 all: $(NAME)
