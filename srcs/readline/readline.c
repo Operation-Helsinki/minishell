@@ -6,7 +6,7 @@
 /*   By: davgarci <davgarci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/06 16:55:15 by psegura-          #+#    #+#             */
-/*   Updated: 2023/01/08 18:14:48 by davgarci         ###   ########.fr       */
+/*   Updated: 2023/01/09 11:17:16 by davgarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,8 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include <string.h>
+
+#include "minishell.h"
 
 // int	main(void)
 // {
@@ -47,7 +49,8 @@ void	readline_create(void)
 		else if(!ft_strcmp(command_buf, "date")) { system("date"); }
 		else if(!ft_strcmp(command_buf, "ls")) { system("ls"); }
 		else if(!ft_strcmp(command_buf, "hola")) { system("say hola, me llamo Shellhinki!"); }
-		else if(!ft_strcmp(command_buf, "exit") || !ft_strcmp(command_buf, "quit") || !ft_strcmp(command_buf, "e") || !ft_strcmp(command_buf, "q")) { break; }
+		else if(!ft_strcmp(command_buf, "exit") || !ft_strcmp(command_buf, "quit") ||
+			!ft_strcmp(command_buf, "e") || !ft_strcmp(command_buf, "q")) { break; }
 		else if (!command_buf){ exit(EXIT_SUCCESS); }
 	}
 }
