@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: davgarci <davgarci@student.42.fr>          +#+  +:+       +#+         #
+#    By: psegura- <psegura-@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/06 16:12:27 by psegura-          #+#    #+#              #
-#    Updated: 2023/01/08 18:10:34 by davgarci         ###   ########.fr        #
+#    Updated: 2023/01/10 18:05:03 by psegura-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,6 +24,7 @@ SRCS =							\
 		srcs/main.c				\
 								\
 		srcs/readline/readline.c\
+		srcs/map_readline/map_readline.c\
 								\
 		srcs/intro/intro.c		\
 
@@ -32,7 +33,7 @@ OBJS = $(SRCS:.c=.o)
 LIB = libft/libft.a
 
 CC = gcc
-CFLAGS	 = -Wall -Wextra -Werror -g3
+CFLAGS	 = -Wall -Wextra -Werror -g3 -fsanitize=address
 CFLAGS	+= -I inc
 CFLAGS	+= -I libft
 READLINE = -lreadline
