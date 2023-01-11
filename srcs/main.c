@@ -6,7 +6,7 @@
 /*   By: psegura- <psegura-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/05 20:37:31 by psegura-          #+#    #+#             */
-/*   Updated: 2023/01/10 22:17:23 by psegura-         ###   ########.fr       */
+/*   Updated: 2023/01/11 11:21:10 by psegura-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,5 +16,6 @@ int	main(void)
 {
 	ft_print_header();
 	readline_create();
+	system("leaks -q minishell");
 	return (0);
 }

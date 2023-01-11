@@ -6,7 +6,7 @@
 #    By: psegura- <psegura-@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/06 16:12:27 by psegura-          #+#    #+#              #
-#    Updated: 2023/01/10 18:05:03 by psegura-         ###   ########.fr        #
+#    Updated: 2023/01/11 11:28:33 by psegura-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,13 +20,15 @@ WHITE	=	\033[0m
 
 NAME = minishell
 
-SRCS =							\
-		srcs/main.c				\
-								\
-		srcs/readline/readline.c\
+SRCS =									\
+		srcs/main.c						\
+		srcs/intro/intro.c				\
+										\
+		srcs/readline/readline.c		\
+										\
 		srcs/map_readline/map_readline.c\
-								\
-		srcs/intro/intro.c		\
+		srcs/executor/find_command.c	\
+		srcs/utils/errors.c				\
 
 OBJS = $(SRCS:.c=.o)
 
