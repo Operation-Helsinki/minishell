@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   find_command.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: psegura- <psegura-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: davgarci <davgarci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/11 10:26:54 by psegura-          #+#    #+#             */
-/*   Updated: 2023/01/11 11:29:28 by psegura-         ###   ########.fr       */
+/*   Updated: 2023/01/11 19:17:26 by davgarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ char	*check_path(char *str)
 
 	env = getenv(str);
 	if (!env)
-		ft_print_error("There is no PATH defined in the enviroment");
+		ft_print_error("There is no PATH defined in the environment");
 	return (env);
 }
 
