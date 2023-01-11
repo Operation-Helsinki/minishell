@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: psegura- <psegura-@student.42.fr>          +#+  +:+       +#+         #
+#    By: davgarci <davgarci@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/06 16:12:27 by psegura-          #+#    #+#              #
-#    Updated: 2023/01/11 11:28:33 by psegura-         ###   ########.fr        #
+#    Updated: 2023/01/11 19:20:43 by davgarci         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -29,6 +29,7 @@ SRCS =									\
 		srcs/map_readline/map_readline.c\
 		srcs/executor/find_command.c	\
 		srcs/utils/errors.c				\
+		srcs/utils/environment.c			\
 
 OBJS = $(SRCS:.c=.o)
 

@@ -1,26 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   environment.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: davgarci <davgarci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/05 20:37:31 by psegura-          #+#    #+#             */
-/*   Updated: 2023/01/11 19:21:15 by davgarci         ###   ########.fr       */
+/*   Created: 2023/01/11 17:35:36 by davgarci          #+#    #+#             */
+/*   Updated: 2023/01/11 19:10:49 by davgarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-int	main(int argc, char **argv, char **env)
+char	**ft_get_env(char **env)
 {
+	int		i;
+	int		j;
 	char	**environment;
 
-	argc = 0;
-	argv = NULL;
-	ft_print_header();
-	environment = ft_get_env(env);
-	readline_create();
-	system("leaks -q minishell");
-	return (0);
+	i = 0;
+	while (env[i])
+		i++;
+	environment = (char **)malloc(sizeof(char *) * (i + 1));
+	i = 0;
+	while (env[i])
+	{
+		environment[i] = (char *)malloc(sizeof(char) * ft_strlen(env[i]) + 1);
+		j = 0;
+		while (env[i][j])
+		{
+			environment[i][j] = env[i][j];
+			j++;
+		}
+		environment[i][j] = '\0';
+		i++;
+	}
+	environment[i] = NULL;
+	return (environment);
 }
