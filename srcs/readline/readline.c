@@ -6,7 +6,7 @@
 /*   By: psegura- <psegura-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/06 16:55:15 by psegura-          #+#    #+#             */
-/*   Updated: 2023/01/10 11:20:32 by psegura-         ###   ########.fr       */
+/*   Updated: 2023/01/11 10:59:23 by psegura-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ void	readline_create(void)
 		map_readline(command_buf);
 		if (ft_strlen(command_buf) > 0)
 			add_history(command_buf);
+		ft_exec(command_buf);
 		if (!ft_strcmp(command_buf, "ifconfig"))
 			system("ifconfig");
 		else if (!ft_strcmp(command_buf, "date"))
