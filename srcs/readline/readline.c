@@ -6,7 +6,7 @@
 /*   By: psegura- <psegura-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/06 16:55:15 by psegura-          #+#    #+#             */
-/*   Updated: 2023/01/11 10:59:23 by psegura-         ###   ########.fr       */
+/*   Updated: 2023/01/13 18:24:23 by psegura-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,10 +21,11 @@ void	readline_create(void)
 		command_buf = (const char *)readline("\033[0;36mShellhinki> \033[0m");
 		if (!command_buf)
 			exit(0);
+		check_quotes(command_buf);
 		map_readline(command_buf);
 		if (ft_strlen(command_buf) > 0)
 			add_history(command_buf);
-		ft_exec(command_buf);
+		// ft_exec(command_buf);
 		if (!ft_strcmp(command_buf, "ifconfig"))
 			system("ifconfig");
 		else if (!ft_strcmp(command_buf, "date"))
@@ -39,5 +40,3 @@ void	readline_create(void)
 			break ;
 	}
 }
-
-//gcc readline.c -lreadline -o shell
