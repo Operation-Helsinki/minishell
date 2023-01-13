@@ -3,7 +3,7 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: davgarci <davgarci@student.42.fr>          +#+  +:+       +#+         #
+#    By: psegura- <psegura-@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/06 16:12:27 by psegura-          #+#    #+#              #
 #    Updated: 2023/01/13 15:53:35 by davgarci         ###   ########.fr        #
@@ -22,14 +22,19 @@ NAME = minishell
 
 SRCS =									\
 		srcs/main.c						\
+										\
 		srcs/intro/intro.c				\
 										\
 		srcs/readline/readline.c		\
 										\
 		srcs/map_readline/map_readline.c\
+										\
+		srcs/tokenizer/tokenizer.c		\
+										\
 		srcs/executor/find_command.c	\
+										\
 		srcs/utils/errors.c				\
-		srcs/utils/environment.c			\
+		srcs/utils/environment.c		\
 
 OBJS = $(SRCS:.c=.o)
 

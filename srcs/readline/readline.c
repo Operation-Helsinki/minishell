@@ -115,16 +115,16 @@ void	readline_create(char **environment)
 			exit(0);
 		expanded_token = expan_token(not_expanded_token, environment);
 		printf("EX: %s\n", expanded_token);
+		check_quotes(command_buf);
 		map_readline(command_buf);
 		if (ft_strlen(command_buf) > 0)
 			add_history(command_buf);
 		// ft_exec(command_buf);
 		if (!ft_strcmp(command_buf, "exit")
+
 			|| !ft_strcmp(command_buf, "quit") || !ft_strcmp(command_buf, "e")
 			|| !ft_strcmp(command_buf, "q"))
 			break ;
 		//system("leaks -q minishell");
 	}
 }
-
-//gcc readline.c -lreadline -o shell
