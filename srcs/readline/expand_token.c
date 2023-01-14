@@ -6,7 +6,7 @@
 /*   By: davgarci <davgarci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/13 23:56:28 by davgarci          #+#    #+#             */
-/*   Updated: 2023/01/14 14:06:40 by davgarci         ###   ########.fr       */
+/*   Updated: 2023/01/14 22:17:15 by davgarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,8 @@ char	*expander(char *post_dolar, int i, char **environment)
 {
 	while (*environment)
 	{
-		if (ft_strncmp(post_dolar, *environment, i) == 0)
+		if (ft_strncmp(post_dolar, *environment, i) == 0
+			&& ft_strncmp(*environment + i, "=", 1) == 0)
 			return (*environment + i + 1);
 		environment++;
 	}
@@ -28,9 +29,16 @@ void	first_if(char *command_buf, t_expand *ex)
 	ex->l = ex->i;
 	ex->i++;
 	ex->j = ex->i;
-	while (command_buf[ex->j] != ' ' && command_buf[ex->j] != '\0'
-		&& command_buf[ex->j] != '$')
+	while (ft_isalnum(command_buf[ex->j]) || command_buf[ex->j] == '_')
+	{
+		if (ft_isdigit(command_buf[ex->j]) == 1
+			&& command_buf[ex->j - 1] == '$')
+		{
+			ex->j++;
+			break ;
+		}
 		ex->j++;
+	}
 	ex->m = ex->j;
 	ex->dolar = (char *)malloc(sizeof(char) * (ex->j - ex->i) + 1);
 	while (ex->i != ex->j)
