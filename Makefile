@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: psegura- <psegura-@student.42.fr>          +#+  +:+       +#+         #
+#    By: davgarci <davgarci@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/06 16:12:27 by psegura-          #+#    #+#              #
-#    Updated: 2023/01/13 15:53:35 by davgarci         ###   ########.fr        #
+#    Updated: 2023/01/14 00:27:35 by davgarci         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -35,6 +35,7 @@ SRCS =									\
 										\
 		srcs/utils/errors.c				\
 		srcs/utils/environment.c		\
+		srcs/readline/expand_token.c	\
 
 OBJS = $(SRCS:.c=.o)
 
