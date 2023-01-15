@@ -6,7 +6,7 @@
 /*   By: davgarci <davgarci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/13 23:56:28 by davgarci          #+#    #+#             */
-/*   Updated: 2023/01/14 22:17:15 by davgarci         ###   ########.fr       */
+/*   Updated: 2023/01/15 13:56:26 by davgarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,10 @@
 
 char	*expander(char *post_dolar, int i, char **environment)
 {
+	if (ft_strncmp(post_dolar, "?", 1) == 0)
+	{
+		return ("?EXP");
+	}
 	while (*environment)
 	{
 		if (ft_strncmp(post_dolar, *environment, i) == 0
@@ -29,9 +33,10 @@ void	first_if(char *command_buf, t_expand *ex)
 	ex->l = ex->i;
 	ex->i++;
 	ex->j = ex->i;
-	while (ft_isalnum(command_buf[ex->j]) || command_buf[ex->j] == '_')
+	while (ft_isalnum(command_buf[ex->j]) || command_buf[ex->j] == '_'
+		|| command_buf[ex->j] == '?')
 	{
-		if (ft_isdigit(command_buf[ex->j]) == 1
+		if ((ft_isdigit(command_buf[ex->j]) == 1 || command_buf[ex->j] == '?')
 			&& command_buf[ex->j - 1] == '$')
 		{
 			ex->j++;
@@ -82,6 +87,8 @@ void	last_else(char *command_buf, t_expand *ex)
 		ex->m++;
 		ex->k++;
 	}
+	if (ex->final != NULL)
+		free(ex->final);
 	ex->final = ft_strjoin(ex->post_expanded, ex->dolar);
 	free(ex->dolar);
 	free(ex->post_expanded);

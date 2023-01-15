@@ -6,7 +6,7 @@
 /*   By: davgarci <davgarci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/06 16:55:15 by psegura-          #+#    #+#             */
-/*   Updated: 2023/01/14 22:17:45 by davgarci         ###   ########.fr       */
+/*   Updated: 2023/01/15 13:34:41 by davgarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,14 +18,14 @@ void	readline_create(char **environment)
 	char		*not_expanded_token;
 	char		*expanded_token;
 	//tokens = tokens();
-	not_expanded_token = "$214 $PA HOLA$";
+	not_expanded_token = "$214 $PA HOLA $? HOLA $PATH";
 	while (1)
 	{
 		command_buf = (const char *)readline("\033[0;36mShellhinki> \033[0m");
 		if (!command_buf)
 			exit(0);
 		expanded_token = expan_token(not_expanded_token, environment);
-		system("leaks -q minishell");
+		// system("leaks -q minishell");
 		printf("EX: %s\n", expanded_token);
 		check_quotes(command_buf);
 		map_readline(command_buf);
