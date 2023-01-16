@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: psegura- <psegura-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: davgarci <davgarci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/05 20:41:16 by psegura-          #+#    #+#             */
-/*   Updated: 2023/01/12 20:23:36 by psegura-         ###   ########.fr       */
+/*   Updated: 2023/01/15 20:15:18 by davgarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,10 +32,20 @@
 /*__EXECUTOR______*/
 # include "executor.h"
 
+/*__BUILTINS______*/
+# include "builtins.h"
+
 /*__UTILS_________*/
 # include "utils.h"
 
 /*__LIBFT_________*/
 # include "../libft/inc/libft.h"
+
+typedef struct s_cosas {
+	char	**environment;
+	char	**tokens;
+}	t_cosas;
+
+t_cosas	g_c;
 
 #endif
