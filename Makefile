@@ -6,7 +6,7 @@
 #    By: davgarci <davgarci@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/06 16:12:27 by psegura-          #+#    #+#              #
-#    Updated: 2023/01/14 22:18:01 by davgarci         ###   ########.fr        #
+#    Updated: 2023/01/15 21:18:21 by psegura-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -30,6 +30,7 @@ SRCS =									\
 		srcs/map_readline/map_readline.c\
 										\
 		srcs/tokenizer/tokenizer.c		\
+		srcs/tokenizer/utils.c			\
 										\
 		srcs/executor/find_command.c	\
 										\
