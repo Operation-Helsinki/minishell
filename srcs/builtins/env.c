@@ -3,11 +3,24 @@
 /*                                                        :::      ::::::::   */
 /*   env.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: psegura- <psegura-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: davgarci <davgarci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/12 21:01:57 by psegura-          #+#    #+#             */
-/*   Updated: 2023/01/12 21:02:40 by psegura-         ###   ########.fr       */
+/*   Updated: 2023/01/15 19:39:24 by davgarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
+
+int	ft_env(char **env)
+{
+	int		i;
+
+	i = 0;
+	while (env[i])
+	{
+		ft_printf("%s\n", env[i]);
+		i++;
+	}
+	return (0);
+}

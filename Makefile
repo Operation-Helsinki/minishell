@@ -6,7 +6,7 @@
 #    By: davgarci <davgarci@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/06 16:12:27 by psegura-          #+#    #+#              #
-#    Updated: 2023/01/15 21:18:21 by psegura-         ###   ########.fr        #
+#    Updated: 2023/01/15 17:41:37 by davgarci         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -37,6 +37,15 @@ SRCS =									\
 		srcs/utils/errors.c				\
 		srcs/utils/environment.c		\
 		srcs/readline/expand_token.c	\
+										\
+		srcs/builtins/builtins.c		\
+		srcs/builtins/cd.c				\
+		srcs/builtins/echo.c			\
+		srcs/builtins/env.c				\
+		srcs/builtins/exit.c			\
+		srcs/builtins/export.c			\
+		srcs/builtins/pwd.c				\
+		srcs/builtins/unset.c			\
 
 OBJS = $(SRCS:.c=.o)
 
