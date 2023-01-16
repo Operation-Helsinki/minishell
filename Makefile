@@ -30,6 +30,7 @@ SRCS =									\
 		srcs/map_readline/map_readline.c\
 										\
 		srcs/tokenizer/tokenizer.c		\
+		srcs/tokenizer/utils.c			\
 										\
 		srcs/executor/find_command.c	\
 										\
