@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   readline.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: davgarci <davgarci@student.42.fr>          +#+  +:+       +#+        */
+/*   By: psegura- <psegura-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/06 16:55:15 by psegura-          #+#    #+#             */
-/*   Updated: 2023/01/13 16:50:17 by davgarci         ###   ########.fr       */
+/*   Updated: 2023/01/14 13:22:23 by psegura-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,10 +107,10 @@ void	readline_create(char **environment)
 	char		*expanded_token;
 	//tokens = tokens();
 
-	not_expanded_token = "HOLA $USER $ $HOLA$USER $ADIOS $";
+	not_expanded_token = "HOLA $USER $ $HOLA$USER $ADIOS $'";
 	while (1)
 	{
-		command_buf = (const char *)readline("\033[0;36mShellhinki> \033[0m");
+		command_buf = (const char *)readline(PROMPT);
 		if (!command_buf)
 			exit(0);
 		expanded_token = expan_token(not_expanded_token, environment);
