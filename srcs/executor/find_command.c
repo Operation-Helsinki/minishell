@@ -3,23 +3,28 @@
 /*                                                        :::      ::::::::   */
 /*   find_command.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: davgarci <davgarci@student.42.fr>          +#+  +:+       +#+        */
+/*   By: psegura- <psegura-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/11 10:26:54 by psegura-          #+#    #+#             */
-/*   Updated: 2023/01/11 19:17:26 by davgarci         ###   ########.fr       */
+/*   Updated: 2023/01/17 00:09:45 by psegura-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-char	*check_path(char *str)
+char	*check_path(void)
 {
-	char	*env;
+	int	i;
 
-	env = getenv(str);
-	if (!env)
-		ft_print_error("There is no PATH defined in the environment");
-	return (env);
+	i = 0;
+	while (g_c.env[i])
+	{
+		if (ft_strncmp(g_c.env[i], "PATH=", 5) == 0)
+			return (g_c.env[i] + 5);
+		i++;
+	}
+	ft_print_error("There is no PATH defined in the environment");
+	return (0);
 }
 
 char	*only_path(char *cmd)
@@ -30,7 +35,7 @@ char	*only_path(char *cmd)
 	char		*path_cmd;
 	const char	*env;
 
-	env = check_path("PATH");
+	env = check_path();
 	env_paths = ft_split(env, ':');
 	i = 0;
 	while (env_paths[i])
@@ -53,12 +58,11 @@ char	*only_path(char *cmd)
 
 void	ft_exec(const char *argv)
 {
-	char		**cmd;
-	char		*path;
-	extern char	**environ;
-
+	char	**cmd;
+	char	*path;
+	
 	cmd = ft_split(argv, SPACE);
 	path = only_path(cmd[0]);
-	if (execve(path, cmd, environ) == -1)
+	if (execve(path, cmd, g_c.env) == -1)
 		ft_perror("");
 }

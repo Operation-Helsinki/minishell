@@ -6,7 +6,7 @@
 /*   By: psegura- <psegura-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/10 22:16:46 by psegura-          #+#    #+#             */
-/*   Updated: 2023/01/15 21:44:03 by psegura-         ###   ########.fr       */
+/*   Updated: 2023/01/16 23:48:22 by psegura-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,6 @@ typedef struct s_expand {
 
 char	*expander(char *post_dolar, int i, char **environment);
 char	*expan_token(char *not_expanded_token, char **environment);
-void	readline_create(char **environment);
+void	readline_create(void);
 
 #endif
