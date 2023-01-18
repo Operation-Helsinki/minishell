@@ -6,7 +6,7 @@
 /*   By: psegura- <psegura-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/06 16:55:15 by psegura-          #+#    #+#             */
-/*   Updated: 2023/01/18 02:42:18 by psegura-         ###   ########.fr       */
+/*   Updated: 2023/01/18 21:21:34 by psegura-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void	readline_create(void)
 	char		*expanded_token;
 
 	// tokens = tokens();
-	not_expanded_token = "HOLA $USER $ $HOLA$USER $ADIOS $";
+	not_expanded_token = "'$USER''$USER'\"$USER\"'$USER'\"$USER\"";
 	while (1)
 	{
 		command_buf = (const char *)readline(PROMPT);
@@ -29,7 +29,7 @@ void	readline_create(void)
 		store_tokens(command_buf, g_c.tokens);
 		ft_print_matrix(g_c.tokens);
 		expanded_token = expan_token(not_expanded_token, g_c.env);
-		system("leaks -q minishell");
+		// system("leaks -q minishell");
 		printf("EX: %s\n", expanded_token);
 		check_quotes(command_buf); /*SEGFAULT IF NOT QUOTES*/
 		map_readline(command_buf);

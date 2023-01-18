@@ -6,7 +6,7 @@
 /*   By: psegura- <psegura-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/13 23:56:28 by davgarci          #+#    #+#             */
-/*   Updated: 2023/01/16 23:47:46 by psegura-         ###   ########.fr       */
+/*   Updated: 2023/01/18 21:28:42 by psegura-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,6 +101,8 @@ char	*expan_token(char *command_buf, char **environment)
 	ft_memset(&ex, 0, sizeof(t_expand));
 	while (command_buf[ex.i])
 	{
+		if (command_buf[ex.i] && command_buf[ex.i] == '\'')
+			find_next_quote(command_buf, &ex.i, '\'');
 		if (command_buf[ex.i] == '$' && command_buf[ex.i + 1] != ' '
 			&& command_buf[ex.i + 1] != '\0')
 		{
