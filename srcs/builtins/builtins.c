@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   builtins.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: davgarci <davgarci@student.42.fr>          +#+  +:+       +#+        */
+/*   By: psegura- <psegura-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/15 15:57:51 by davgarci          #+#    #+#             */
-/*   Updated: 2023/01/15 20:33:03 by davgarci         ###   ########.fr       */
+/*   Updated: 2023/01/16 22:09:04 by psegura-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-int			builtins(char *str)
+int	builtins(char *str)
 {
 	/*no recibirá char*str sino una estructura*/
 	if (!str)

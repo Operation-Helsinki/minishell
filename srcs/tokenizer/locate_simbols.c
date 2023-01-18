@@ -6,63 +6,16 @@
 /*   By: psegura- <psegura-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/14 14:26:38 by psegura-          #+#    #+#             */
-/*   Updated: 2023/01/16 21:00:31 by psegura-         ###   ########.fr       */
+/*   Updated: 2023/01/18 02:35:06 by psegura-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-// #include "minishell.h"
+#include "minishell.h"
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 
-void	count_symbols(char letter, int *symbol_c)
-{
-	if (letter != '\0'
-		&& (letter == '<' || letter == '>'))
-		(*symbol_c)++;
-}
-
-int	tokens(char *str)
-{
-	int	i;
-	int	j;
-	int	symbol_c;
-	int	*symbol_index;
-
-	i = -1;
-	symbol_c = 0;
-	while (str[++i])
-		count_symbols(str[i], &symbol_c);
-	symbol_index = malloc(symbol_c * sizeof(int));
-	i = -1;
-	j = 0;
-	while (str[++i])
-	{
-		if (str[i] != '\0' && (str[i] == '<' || str[i] == '>'))
-				symbol_index[j++] = i;
-	}
-	printf("[%d]\n", symbol_index[0]);
-	return (symbol_c);
-}
-
-int	more_text(char *str)
-{
-	int	i;
-	int	flag;
-
-	i = 0;
-	flag = 1;
-	if (!str)
-		return (0);
-	while (str[i])
-	{
-		if (str[i] == '\"' || str[i] == '\"')
-			flag = 0;
-		i++;
-	}
-	return (flag);
-}
-
-void	find_next_quote(char *str, int *i, char quote)
+void	find_next_quote(const char *str, int *i, char quote)
 {
 	if (quote == '\"')
 	{
@@ -78,7 +31,7 @@ void	find_next_quote(char *str, int *i, char quote)
 	}
 }
 
-int	count_tokens(char *str)
+int	count_tokens(const char *str)
 {
 	int	i;
 	int	token_c;
@@ -105,11 +58,71 @@ int	count_tokens(char *str)
 	return (token_c);
 }
 
-// int main(int argc, char **argv)
-// {
-// 	(void)argc;
-// 	printf("Input: [%s]\n", argv[1]);
-// 	printf("Tokens count: %d\n", count_tokens(argv[1]));
-// 	// printf("Symbols count: %d\n", tokens(argv[1]));
-// 	return (0);
-// }
+void find_tokens(const char *str, int *i, int *j, char** tokens, int* k)
+{
+    while (str[(*i)] != ' ' && str[(*i)])
+    {
+        if (str[(*i)] == '\"')
+            find_next_quote(str, i, '\"');
+        if (str[(*i)] == '\'')
+            find_next_quote(str, i, '\'');
+        if (str[(*i)])
+            (*i)++;
+    }
+    if ((*i) > (*j))
+    {
+        int len = (*i) - (*j);
+        char* token = malloc(sizeof(char) * (len + 1));
+        strncpy(token, str + (*j), len);
+        token[len] = '\0';
+        tokens[*k] = token;
+        (*k)++;
+    }
+}
+
+void store_tokens(const char *str, char **tokens)
+{
+    int i = 0;
+    int j;
+    int k = 0;
+
+    while (str[i])
+    {
+        while (str[i] == ' ' && str[i])
+            i++;
+        j = i;
+        find_tokens(str, &i, &j, tokens, &k);
+    }
+}
+
+void	ft_print_matrix(char **matrix)
+{
+	int	i;
+
+	i = 0;
+	while (matrix[i])
+	{
+		if (matrix[i] != NULL)
+			printf("token [%d] -> [%s]\n", i, matrix[i]);
+		i++;
+	}
+}
+/*
+int	main(int argc, char **argv)
+{
+	char	**tokens;
+	int		i = 0;
+
+	(void)argc;
+	printf("Tokens count: %d\n", count_tokens(argv[1]));
+	tokens = malloc(sizeof(char *) * count_tokens(argv[1]) + 1);
+	store_tokens(argv[1], tokens);
+	while (tokens[i])
+	{
+		if (tokens[i] != NULL)
+			printf("token [%d] -> [%s]\n", i, tokens[i]);
+		i++;
+	}
+	return (0);
+}
+*/
