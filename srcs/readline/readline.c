@@ -6,7 +6,7 @@
 /*   By: psegura- <psegura-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/06 16:55:15 by psegura-          #+#    #+#             */
-/*   Updated: 2023/01/18 21:21:34 by psegura-         ###   ########.fr       */
+/*   Updated: 2023/01/18 22:05:42 by psegura-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void	readline_create(void)
 	char		*expanded_token;
 
 	// tokens = tokens();
-	not_expanded_token = "'$USER''$USER'\"$USER\"'$USER'\"$USER\"";
+	not_expanded_token = "\"$USER'$USER'\"";
 	while (1)
 	{
 		command_buf = (const char *)readline(PROMPT);
