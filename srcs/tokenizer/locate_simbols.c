@@ -6,14 +6,11 @@
 /*   By: psegura- <psegura-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/14 14:26:38 by psegura-          #+#    #+#             */
-/*   Updated: 2023/01/18 02:35:06 by psegura-         ###   ########.fr       */
+/*   Updated: 2023/01/18 22:03:19 by psegura-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
 
 void	find_next_quote(const char *str, int *i, char quote)
 {
@@ -58,41 +55,48 @@ int	count_tokens(const char *str)
 	return (token_c);
 }
 
-void find_tokens(const char *str, int *i, int *j, char** tokens, int* k)
+void	find_tokens(const char *str, int *i, int *j, char **tokens, int *k)
 {
-    while (str[(*i)] != ' ' && str[(*i)])
-    {
-        if (str[(*i)] == '\"')
-            find_next_quote(str, i, '\"');
-        if (str[(*i)] == '\'')
-            find_next_quote(str, i, '\'');
-        if (str[(*i)])
-            (*i)++;
-    }
-    if ((*i) > (*j))
-    {
-        int len = (*i) - (*j);
-        char* token = malloc(sizeof(char) * (len + 1));
-        strncpy(token, str + (*j), len);
-        token[len] = '\0';
-        tokens[*k] = token;
-        (*k)++;
-    }
+	int		len;
+	char	*token;
+
+	token = NULL;
+	while (str[(*i)] != ' ' && str[(*i)])
+	{
+		if (str[(*i)] == '\"')
+			find_next_quote(str, i, '\"');
+		if (str[(*i)] == '\'')
+			find_next_quote(str, i, '\'');
+		if (str[(*i)])
+			(*i)++;
+	}
+	if ((*i) > (*j))
+	{
+		len = (*i) - (*j);
+		token = malloc(sizeof(char) * (len + 1));
+		ft_strncpy(token, str + (*j), len);
+		token[len] = '\0';
+		tokens[*k] = token;
+		(*k)++;
+	}
 }
 
-void store_tokens(const char *str, char **tokens)
+void	store_tokens(const char *str, char **tokens)
 {
-    int i = 0;
-    int j;
-    int k = 0;
+	int	i;
+	int	j;
+	int	k;
 
-    while (str[i])
-    {
-        while (str[i] == ' ' && str[i])
-            i++;
-        j = i;
-        find_tokens(str, &i, &j, tokens, &k);
-    }
+	i = 0;
+	k = 0;
+	while (str[i])
+	{
+		while (str[i] == ' ' && str[i])
+			i++;
+		j = i;
+		find_tokens(str, &i, &j, tokens, &k);
+	}
+	tokens[k] = NULL;
 }
 
 void	ft_print_matrix(char **matrix)

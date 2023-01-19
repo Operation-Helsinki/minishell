@@ -6,7 +6,7 @@
 #    By: psegura- <psegura-@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/06/14 20:21:59 by psegura-          #+#    #+#              #
-#    Updated: 2022/11/28 17:16:02 by psegura-         ###   ########.fr        #
+#    Updated: 2023/01/18 21:38:25 by psegura-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -37,6 +37,7 @@ SRCS_NAME = 						\
 			ft_isprint.c			\
 									\
 			ft_strlen.c				\
+			ft_strncpy.c			\
 			ft_strlcpy.c			\
 			ft_strlcat.c			\
 			ft_strchr.c				\

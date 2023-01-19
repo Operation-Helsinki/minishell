@@ -6,7 +6,7 @@
 /*   By: psegura- <psegura-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/10 22:16:46 by psegura-          #+#    #+#             */
-/*   Updated: 2023/01/16 23:48:22 by psegura-         ###   ########.fr       */
+/*   Updated: 2023/01/18 21:17:23 by psegura-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ typedef struct s_expand {
 	int		k;
 	int		l;
 	int		m;
+	int		flag;
 	char	*expanded;
 	char	*post_expanded;
 	char	*final;
