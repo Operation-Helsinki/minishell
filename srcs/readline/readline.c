@@ -6,7 +6,7 @@
 /*   By: psegura- <psegura-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/06 16:55:15 by psegura-          #+#    #+#             */
-/*   Updated: 2023/01/18 22:05:42 by psegura-         ###   ########.fr       */
+/*   Updated: 2023/01/21 22:14:35 by psegura-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,17 +25,15 @@ void	readline_create(void)
 		command_buf = (const char *)readline(PROMPT);
 		if (!command_buf)
 			exit(0);
-		g_c.tokens = malloc(sizeof(char *) * count_tokens(command_buf) + 1);
+		g_c.tokens = malloc(sizeof(char *) * (count_tokens(command_buf) + 1));
 		store_tokens(command_buf, g_c.tokens);
-		ft_print_matrix(g_c.tokens);
+		ft_print_matrix(g_c.tokens, "tokens ->");
 		expanded_token = expan_token(not_expanded_token, g_c.env);
-		// system("leaks -q minishell");
 		printf("EX: %s\n", expanded_token);
-		check_quotes(command_buf); /*SEGFAULT IF NOT QUOTES*/
-		map_readline(command_buf);
+		check_quotes(command_buf);
 		if (ft_strlen(command_buf) > 0)
 			add_history(command_buf);
-		ft_exec(command_buf);
+		// ft_exec(command_buf);
 		if (!ft_strcmp(command_buf, "exit")
 			|| !ft_strcmp(command_buf, "quit") || !ft_strcmp(command_buf, "e")
 			|| !ft_strcmp(command_buf, "q"))

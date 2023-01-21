@@ -1,20 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   env.c                                              :+:      :+:    :+:   */
+/*   ft_len_matrix.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: psegura- <psegura-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/12 21:01:57 by psegura-          #+#    #+#             */
-/*   Updated: 2023/01/21 13:57:00 by psegura-         ###   ########.fr       */
+/*   Created: 2023/01/21 01:48:57 by psegura-          #+#    #+#             */
+/*   Updated: 2023/01/21 02:32:20 by psegura-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell.h"
+#include "libft.h"
 
-/* HAY QUE MODIFICAR FT_PRINT_MATRIX */
-int	ft_env(char **env)
+int	ft_len_matrix(char **matrix)
 {
-	ft_print_matrix(env, "");
-	return (0);
+	int	i;
+
+	i = -1;
+	while (matrix[++i])
+		;
+	return (i);
 }

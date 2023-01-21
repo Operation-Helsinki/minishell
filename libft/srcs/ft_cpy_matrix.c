@@ -1,40 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   environment.c                                      :+:      :+:    :+:   */
+/*   ft_cpy_matrix.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: psegura- <psegura-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/11 17:35:36 by davgarci          #+#    #+#             */
-/*   Updated: 2023/01/21 21:15:03 by psegura-         ###   ########.fr       */
+/*   Created: 2023/01/21 01:52:23 by psegura-          #+#    #+#             */
+/*   Updated: 2023/01/21 21:15:29 by psegura-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell.h"
+#include "libft.h"
 
-char	**ft_get_env(char **env)
+char	**ft_cpy_matrix(char **matrix)
 {
+	int		len;
+	char	**aux;
 	int		i;
-	int		j;
-	char	**environment;
 
+	if (!matrix)
+		return (NULL);
+	len = ft_len_matrix(matrix);
+	aux = malloc(sizeof(char *) * (len + 1));
+	if (!aux)
+		return (NULL);
 	i = 0;
-	while (env[i])
-		i++;
-	environment = (char **)malloc(sizeof(char *) * (i + 1));
-	i = 0;
-	while (env[i])
+	while (i < len)
 	{
-		environment[i] = (char *)malloc(sizeof(char) * (ft_strlen(env[i]) + 1));
-		j = 0;
-		while (env[i][j])
-		{
-			environment[i][j] = env[i][j];
-			j++;
-		}
-		environment[i][j] = '\0';
+		aux[i] = malloc(sizeof(char) * (ft_strlen(matrix[i]) + 1));
+		if (!aux[i])
+			return (ft_free_matrix(aux), NULL);
+		ft_strncpy(aux[i], matrix[i], ft_strlen(matrix[i]) + 1);
 		i++;
 	}
-	environment[i] = NULL;
-	return (environment);
+	aux[i] = NULL;
+	return (aux);
 }
