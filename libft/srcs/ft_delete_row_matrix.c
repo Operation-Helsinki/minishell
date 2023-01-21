@@ -6,41 +6,57 @@
 /*   By: psegura- <psegura-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/21 01:48:53 by psegura-          #+#    #+#             */
-/*   Updated: 2023/01/21 03:30:23 by psegura-         ###   ########.fr       */
+/*   Updated: 2023/01/21 12:51:26 by psegura-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	**ft_delete_row_matrix(char **matrix, int delete)
+typedef struct s_count
 {
-	int		len;
+	int	i;
+	int	j;
+	int	len;
+}	t_count;
+
+char	**allocate_matrix(char **matrix, int delete, int *len)
+{
 	char	**aux;
-	int		i;
-	int		j;
 
 	if (!matrix)
 		return (NULL);
-	len = ft_len_matrix(matrix);
-	if (delete > len)
+	*(len) = ft_len_matrix(matrix);
+	if (delete > *(len))
 		return (matrix);
-	aux = malloc(sizeof(char *) * len);
+	aux = malloc(sizeof(char *) * *(len));
 	if (!aux)
 		return (NULL);
-	i = 0;
-	j = 0;
-	while (i < len)
+	return (aux);
+}
+
+char	**ft_delete_row_matrix(char **matrix, int delete)
+{
+	char	**aux;
+	t_count	c;
+
+	ft_memset(&c, 0, sizeof(t_count));
+	aux = allocate_matrix(matrix, delete, &c.len);
+	if (!aux)
+		return (NULL);
+	if (delete > c.len)
+		return (matrix);
+	while (c.i < c.len)
 	{
-		if (i != delete)
+		if (c.i != delete)
 		{	
-			aux[j] = malloc(sizeof(char) * (ft_strlen(matrix[i]) + 1));
-			if (!aux[j])
+			aux[c.j] = malloc(sizeof(char) * (ft_strlen(matrix[c.i]) + 1));
+			if (!aux[c.j])
 				return (ft_free_matrix(aux), NULL);
-			ft_strncpy(aux[j], matrix[i], ft_strlen(matrix[i]) + 1);
-			j++;
+			ft_strncpy(aux[c.j], matrix[c.i], ft_strlen(matrix[c.i]) + 1);
+			c.j++;
 		}
-		i++;
+		c.i++;
 	}
-	aux[j] = NULL;
+	aux[c.j] = NULL;
 	return (aux);
 }

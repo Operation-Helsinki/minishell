@@ -6,7 +6,7 @@
 /*   By: psegura- <psegura-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/14 16:44:42 by psegura-          #+#    #+#             */
-/*   Updated: 2023/01/21 02:46:20 by psegura-         ###   ########.fr       */
+/*   Updated: 2023/01/21 04:20:19 by psegura-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ void		ft_print_matrix(char **matrix, char *str);
 void		ft_free_matrix(char **matrix);
 int			ft_len_matrix(char **matrix);
 char		**ft_cpy_matrix(char **matrix);
-char		**ft_add_row_matrix(char **matrix, int i);
+char		**ft_add_row_matrix(char **matrix, char *new_row);
 char		**ft_delete_row_matrix(char **matrix, int i);
 
 void		ft_bzero(void *s, size_t n);
