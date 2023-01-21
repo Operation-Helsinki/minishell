@@ -6,11 +6,17 @@
 /*   By: psegura- <psegura-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/14 14:26:38 by psegura-          #+#    #+#             */
-/*   Updated: 2023/01/21 02:41:45 by psegura-         ###   ########.fr       */
+/*   Updated: 2023/01/21 23:40:54 by psegura-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
+
+typedef struct s_count {
+	int		i;
+	int		j;
+	int		k;
+}	t_count;
 
 void	find_next_quote(const char *str, int *i, char quote)
 {
@@ -55,48 +61,45 @@ int	count_tokens(const char *str)
 	return (token_c);
 }
 
-void	find_tokens(const char *str, int *i, int *j, char **tokens, int *k)
+void	find_tokens(const char *str, char **tokens, t_count *c)
 {
 	int		len;
 	char	*token;
 
 	token = NULL;
-	while (str[(*i)] != ' ' && str[(*i)])
+	while (str[(c->i)] != ' ' && str[(c->i)])
 	{
-		if (str[(*i)] == '\"')
-			find_next_quote(str, i, '\"');
-		if (str[(*i)] == '\'')
-			find_next_quote(str, i, '\'');
-		if (str[(*i)])
-			(*i)++;
+		if (str[(c->i)] == '\"')
+			find_next_quote(str, &c->i, '\"');
+		if (str[(c->i)] == '\'')
+			find_next_quote(str, &c->i, '\'');
+		if (str[(c->i)])
+			(c->i)++;
 	}
-	if ((*i) > (*j))
+	if ((c->i) > (c->j))
 	{
-		len = (*i) - (*j);
+		len = (c->i) - (c->j);
 		token = malloc(sizeof(char) * (len + 1));
-		ft_strncpy(token, str + (*j), len);
+		ft_strncpy(token, str + (c->j), len);
 		token[len] = '\0';
-		tokens[*k] = token;
-		(*k)++;
+		tokens[c->k] = token;
+		(c->k)++;
 	}
 }
 
 void	store_tokens(const char *str, char **tokens)
 {
-	int	i;
-	int	j;
-	int	k;
+	t_count	c;
 
-	i = 0;
-	k = 0;
-	while (str[i])
+	ft_memset(&c, 0, sizeof(t_count));
+	while (str[c.i])
 	{
-		while (str[i] == ' ' && str[i])
-			i++;
-		j = i;
-		find_tokens(str, &i, &j, tokens, &k);
+		while (str[c.i] == ' ' && str[c.i])
+			c.i++;
+		c.j = c.i;
+		find_tokens(str, tokens, &c);
 	}
-	tokens[k] = NULL;
+	tokens[c.k] = NULL;
 }
 
 /*

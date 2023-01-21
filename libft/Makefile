@@ -6,7 +6,7 @@
 #    By: psegura- <psegura-@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/06/14 20:21:59 by psegura-          #+#    #+#              #
-#    Updated: 2023/01/21 03:22:54 by psegura-         ###   ########.fr        #
+#    Updated: 2023/01/21 14:10:32 by psegura-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -58,6 +58,7 @@ SRCS_NAME = 						\
 			ft_print_matrix.c		\
 			ft_free_matrix.c		\
 			ft_len_matrix.c			\
+			ft_locate_str_in_matrix.c\
 			ft_cpy_matrix.c			\
 			ft_add_row_matrix.c		\
 			ft_delete_row_matrix.c	\

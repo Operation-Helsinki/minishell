@@ -6,7 +6,7 @@
 /*   By: psegura- <psegura-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/21 01:49:01 by psegura-          #+#    #+#             */
-/*   Updated: 2023/01/21 11:40:03 by psegura-         ###   ########.fr       */
+/*   Updated: 2023/01/21 17:35:23 by psegura-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ char	**ft_add_row_matrix(char **matrix, char *new_row)
 	if (!new_row)
 		return (matrix);
 	len = ft_len_matrix(matrix);
-	aux = malloc(sizeof(char *) * len + 2);
+	aux = malloc(sizeof(char *) * (len + 2));
 	if (!aux)
 		return (NULL);
 	i = 0;

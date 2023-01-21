@@ -6,7 +6,7 @@
 #    By: psegura- <psegura-@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/06 16:12:27 by psegura-          #+#    #+#              #
-#    Updated: 2023/01/18 02:31:14 by psegura-         ###   ########.fr        #
+#    Updated: 2023/01/21 21:59:10 by psegura-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -27,7 +27,6 @@ SRCS =									\
 										\
 		srcs/readline/readline.c		\
 										\
-		srcs/map_readline/map_readline.c\
 										\
 		srcs/tokenizer/tokenizer.c		\
 		srcs/tokenizer/locate_simbols.c	\
