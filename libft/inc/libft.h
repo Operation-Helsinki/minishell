@@ -6,7 +6,7 @@
 /*   By: psegura- <psegura-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/14 16:44:42 by psegura-          #+#    #+#             */
-/*   Updated: 2023/01/18 21:41:27 by psegura-         ###   ########.fr       */
+/*   Updated: 2023/01/21 02:46:20 by psegura-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,13 @@ void		*ft_memchr(const void *s, int c, size_t n);
 void		*ft_memmove(void *dst, const void *src, size_t len);
 void		*ft_memset(void *b, int c, size_t len);
 void		*ft_memcpy(void *dst, const void *src, size_t n);
+
+void		ft_print_matrix(char **matrix, char *str);
 void		ft_free_matrix(char **matrix);
+int			ft_len_matrix(char **matrix);
+char		**ft_cpy_matrix(char **matrix);
+char		**ft_add_row_matrix(char **matrix, int i);
+char		**ft_delete_row_matrix(char **matrix, int i);
 
 void		ft_bzero(void *s, size_t n);
 void		*ft_calloc(size_t count, size_t size);

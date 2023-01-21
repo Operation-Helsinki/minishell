@@ -6,7 +6,7 @@
 #    By: psegura- <psegura-@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/06/14 20:21:59 by psegura-          #+#    #+#              #
-#    Updated: 2023/01/18 21:38:25 by psegura-         ###   ########.fr        #
+#    Updated: 2023/01/21 03:22:54 by psegura-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -54,7 +54,13 @@ SRCS_NAME = 						\
 			ft_memmove.c			\
 			ft_memchr.c				\
 			ft_memcmp.c				\
+									\
+			ft_print_matrix.c		\
 			ft_free_matrix.c		\
+			ft_len_matrix.c			\
+			ft_cpy_matrix.c			\
+			ft_add_row_matrix.c		\
+			ft_delete_row_matrix.c	\
 									\
 			ft_bzero.c				\
 			ft_calloc.c				\
@@ -90,7 +96,7 @@ SRCS_NAME = 						\
 
 ### Files ###
 
-SRCDIR = src
+SRCDIR = srcs
 OBJDIR = obj
 INCDIR = inc
 
@@ -139,4 +145,7 @@ fclean: reset clean
 
 re: fclean all
 
-.PHONY: all clean fclean re reset
+norma:
+	@echo 6e6f726d696e65747465207372637320696e6320313e2f6465762f6e756c6c3b206966205b5b20243f202d65712030205d5d3b207468656e206e6f726d696e65747465207372637320696e633b20656c7365206e6f726d696e65747465207372637320696e63207c206772657020274572726f7227203b206669 | xxd -r -p | zsh
+
+.PHONY: all clean fclean re reset norma

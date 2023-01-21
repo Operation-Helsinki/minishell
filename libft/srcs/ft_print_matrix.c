@@ -1,19 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   env.c                                              :+:      :+:    :+:   */
+/*   ft_print_matrix.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: psegura- <psegura-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/12 21:01:57 by psegura-          #+#    #+#             */
-/*   Updated: 2023/01/21 01:12:17 by psegura-         ###   ########.fr       */
+/*   Created: 2023/01/21 02:42:16 by psegura-          #+#    #+#             */
+/*   Updated: 2023/01/21 02:45:55 by psegura-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell.h"
+#include "libft.h"
 
-int	ft_env(char **env)
+void	ft_print_matrix(char **matrix, char *str)
 {
-	ft_print_matrix(env);
-	return (0);
+	int	i;
+
+	i = 0;
+	while (matrix[i])
+	{
+		if (matrix[i] != NULL)
+			printf("%s [%d] -> [%s]\n", str, i, matrix[i]);
+		i++;
+	}
 }

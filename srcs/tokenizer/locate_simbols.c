@@ -6,7 +6,7 @@
 /*   By: psegura- <psegura-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/14 14:26:38 by psegura-          #+#    #+#             */
-/*   Updated: 2023/01/18 22:03:19 by psegura-         ###   ########.fr       */
+/*   Updated: 2023/01/21 02:41:45 by psegura-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,18 +99,6 @@ void	store_tokens(const char *str, char **tokens)
 	tokens[k] = NULL;
 }
 
-void	ft_print_matrix(char **matrix)
-{
-	int	i;
-
-	i = 0;
-	while (matrix[i])
-	{
-		if (matrix[i] != NULL)
-			printf("token [%d] -> [%s]\n", i, matrix[i]);
-		i++;
-	}
-}
 /*
 int	main(int argc, char **argv)
 {
