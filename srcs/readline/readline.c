@@ -6,7 +6,7 @@
 /*   By: davgarci <davgarci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/06 16:55:15 by psegura-          #+#    #+#             */
-/*   Updated: 2023/01/22 19:51:50 by davgarci         ###   ########.fr       */
+/*   Updated: 2023/01/22 20:25:25 by davgarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ void	readline_create(void)
 		//int i;
 		g_c.dolar_q = 123;
 		
-		command_buf = (const char *)readline(PROMPT);
+		command_buf = (const char *)readline(PROMPT); //hehe
 		if (!command_buf)
 			exit(0);
 		g_c.tokens = malloc(sizeof(char *) * (count_tokens(command_buf) + 1));
