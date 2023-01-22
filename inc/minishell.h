@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: psegura- <psegura-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: davgarci <davgarci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/05 20:41:16 by psegura-          #+#    #+#             */
-/*   Updated: 2023/01/16 23:48:00 by psegura-         ###   ########.fr       */
+/*   Updated: 2023/01/21 01:32:05 by davgarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,9 @@
 typedef struct s_cosas {
 	char	**env;
 	char	**tokens;
+	int		tok_count;
+	int		flag;
+	int		dolar_q;
 }	t_cosas;
 
 t_cosas	g_c;

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   readline.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: psegura- <psegura-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: davgarci <davgarci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/06 16:55:15 by psegura-          #+#    #+#             */
-/*   Updated: 2023/01/21 22:14:35 by psegura-         ###   ########.fr       */
+/*   Updated: 2023/01/22 20:25:25 by davgarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,21 +15,30 @@
 void	readline_create(void)
 {
 	const char	*command_buf;
-	char		*not_expanded_token;
-	char		*expanded_token;
+	//char		*expanded_token;
 
-	// tokens = tokens();
-	not_expanded_token = "\"$USER'$USER'\"";
 	while (1)
 	{
-		command_buf = (const char *)readline(PROMPT);
+		//int i;
+		g_c.dolar_q = 123;
+		
+		command_buf = (const char *)readline(PROMPT); //hehe
 		if (!command_buf)
 			exit(0);
 		g_c.tokens = malloc(sizeof(char *) * (count_tokens(command_buf) + 1));
 		store_tokens(command_buf, g_c.tokens);
-		ft_print_matrix(g_c.tokens, "tokens ->");
-		expanded_token = expan_token(not_expanded_token, g_c.env);
-		printf("EX: %s\n", expanded_token);
+		printf("-> imput\n");
+		ft_print_matrix(g_c.tokens);
+		g_c.tok_count = 0;
+		while (g_c.tokens[g_c.tok_count])
+		{
+			printf("token al entrar [%s]\n", g_c.tokens[g_c.tok_count]);
+			g_c.tokens[g_c.tok_count] = expan_token2(g_c.tokens[g_c.tok_count], g_c.env);
+			printf("token al salir [%s]\n", g_c.tokens[g_c.tok_count]);
+			g_c.tok_count++;
+		}
+		printf("-> out_put\n");
+		// ft_print_matrix(g_c.tokens);
 		check_quotes(command_buf);
 		if (ft_strlen(command_buf) > 0)
 			add_history(command_buf);
@@ -38,6 +47,11 @@ void	readline_create(void)
 			|| !ft_strcmp(command_buf, "quit") || !ft_strcmp(command_buf, "e")
 			|| !ft_strcmp(command_buf, "q"))
 			break ;
-		//system("leaks -q minishell");
 	}
 }
+
+		// ft_print_matrix(g_c.env);
+		//ft_exec(command_buf);
+		//map_readline(command_buf);
+		//system("leaks -q minishell");
+		// system("leaks -q minishell");

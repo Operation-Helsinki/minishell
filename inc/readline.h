@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   readline.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: psegura- <psegura-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: davgarci <davgarci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/10 22:16:46 by psegura-          #+#    #+#             */
-/*   Updated: 2023/01/18 21:17:23 by psegura-         ###   ########.fr       */
+/*   Updated: 2023/01/21 04:07:41 by davgarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ typedef struct s_expand {
 	int		k;
 	int		l;
 	int		m;
+	int		n;
 	int		flag;
 	char	*expanded;
 	char	*post_expanded;
@@ -31,7 +32,8 @@ typedef struct s_expand {
 }	t_expand;
 
 char	*expander(char *post_dolar, int i, char **environment);
-char	*expan_token(char *not_expanded_token, char **environment);
+char	*expan_token2(char *command_buf, char **environment);
+char	*malloc_expand(t_expand *expand, char *command_buf, char **environment);
 void	readline_create(void);
 
 #endif
