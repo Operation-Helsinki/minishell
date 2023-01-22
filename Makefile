@@ -27,7 +27,6 @@ SRCS =									\
 										\
 		srcs/readline/readline.c		\
 										\
-		srcs/map_readline/map_readline.c\
 										\
 		srcs/tokenizer/tokenizer.c		\
 		srcs/tokenizer/locate_simbols.c	\

@@ -25,7 +25,7 @@ void	readline_create(void)
 		command_buf = (const char *)readline(PROMPT);
 		if (!command_buf)
 			exit(0);
-		g_c.tokens = malloc(sizeof(char *) * count_tokens(command_buf) + 1);
+		g_c.tokens = malloc(sizeof(char *) * (count_tokens(command_buf) + 1));
 		store_tokens(command_buf, g_c.tokens);
 		printf("-> imput\n");
 		ft_print_matrix(g_c.tokens);
@@ -42,6 +42,7 @@ void	readline_create(void)
 		check_quotes(command_buf);
 		if (ft_strlen(command_buf) > 0)
 			add_history(command_buf);
+		// ft_exec(command_buf);
 		if (!ft_strcmp(command_buf, "exit")
 			|| !ft_strcmp(command_buf, "quit") || !ft_strcmp(command_buf, "e")
 			|| !ft_strcmp(command_buf, "q"))

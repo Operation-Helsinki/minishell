@@ -6,7 +6,7 @@
 /*   By: psegura- <psegura-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/29 11:22:30 by psegura-          #+#    #+#             */
-/*   Updated: 2022/11/11 00:12:01 by psegura-         ###   ########.fr       */
+/*   Updated: 2023/01/21 21:14:14 by psegura-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,7 +73,7 @@ char	*ft_itoa(int n)
 
 	n_long = (long long)n;
 	len = ft_len(n_long);
-	dst = malloc(sizeof(char) * len + 1);
+	dst = malloc(sizeof(char) * (len + 1));
 	if (dst == NULL)
 		return (NULL);
 	dst[len] = '\0';

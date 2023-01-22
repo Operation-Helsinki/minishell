@@ -1,40 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   environment.c                                      :+:      :+:    :+:   */
+/*   ft_locate_str_in_matrix.c                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: psegura- <psegura-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/11 17:35:36 by davgarci          #+#    #+#             */
-/*   Updated: 2023/01/21 21:15:03 by psegura-         ###   ########.fr       */
+/*   Created: 2023/01/21 14:09:33 by psegura-          #+#    #+#             */
+/*   Updated: 2023/01/21 16:41:14 by psegura-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell.h"
+#include "libft.h"
 
-char	**ft_get_env(char **env)
+int	ft_locate_str_in_matrix(char **matrix, char *str)
 {
-	int		i;
-	int		j;
-	char	**environment;
+	int	i;
 
 	i = 0;
-	while (env[i])
-		i++;
-	environment = (char **)malloc(sizeof(char *) * (i + 1));
-	i = 0;
-	while (env[i])
+	while (matrix[i])
 	{
-		environment[i] = (char *)malloc(sizeof(char) * (ft_strlen(env[i]) + 1));
-		j = 0;
-		while (env[i][j])
-		{
-			environment[i][j] = env[i][j];
-			j++;
-		}
-		environment[i][j] = '\0';
+		if (ft_strncmp(matrix[i], str, ft_strlen(str)) == 0)
+			return (i);
 		i++;
 	}
-	environment[i] = NULL;
-	return (environment);
+	return (-10);
 }

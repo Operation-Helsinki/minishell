@@ -5,35 +5,23 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: psegura- <psegura-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/08 01:34:27 by psegura-          #+#    #+#             */
-/*   Updated: 2022/11/09 01:10:31 by psegura-         ###   ########.fr       */
+/*   Created: 2023/01/21 02:37:36 by psegura-          #+#    #+#             */
+/*   Updated: 2023/01/21 13:08:07 by psegura-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-// #include "../inc/libft.h"
-// //Open
-// #include <fcntl.h>
+#include "./inc/libft.h"
 
-// void	ft_leaks(void)
-// {
-// 	system("leaks a.out");
-// }
+int	main(int argc, char **argv, char **env)
+{
+	char	**after_delete;
+	char	**after_add;
 
-// int	main(void)
-// {
-// 	int		fd;
-// 	char	*line = "HOLA";
-
-// 	ft_printf("%d", OPEN_MAX);
-// 	atexit(ft_leaks);
-// 	fd = open("./src/get_next_line.c", O_RDONLY);
-// 	while (line)
-// 	{
-// 		line = get_next_line(fd);
-// 		if (line)
-// 			ft_printf("%s", line);
-// 		free(line);
-// 	}
-// 	close(fd);
-// 	return (0);
-// }
+	ft_print_matrix(env, "env");
+	after_delete = ft_delete_row_matrix(env, 10);
+	ft_print_matrix(after_delete, "after_delete");
+	after_add = ft_add_row_matrix(after_delete, "paco=1234");
+	ft_print_matrix(after_add, "after_add");
+	system("leaks -q a.out");
+	return (0);
+}
