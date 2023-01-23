@@ -6,7 +6,7 @@
 /*   By: davgarci <davgarci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/10 22:16:46 by psegura-          #+#    #+#             */
-/*   Updated: 2023/01/21 04:07:41 by davgarci         ###   ########.fr       */
+/*   Updated: 2023/01/23 16:21:12 by davgarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,7 @@ typedef struct s_expand {
 char	*expander(char *post_dolar, int i, char **environment);
 char	*expan_token2(char *command_buf, char **environment);
 char	*malloc_expand(t_expand *expand, char *command_buf, char **environment);
+char	*copy_join(char *str1, char *str2, t_expand *expand);
 void	readline_create(void);
 
 #endif

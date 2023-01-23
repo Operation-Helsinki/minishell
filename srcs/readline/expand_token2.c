@@ -6,7 +6,7 @@
 /*   By: davgarci <davgarci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/19 17:57:27 by davgarci          #+#    #+#             */
-/*   Updated: 2023/01/22 19:57:46 by davgarci         ###   ########.fr       */
+/*   Updated: 2023/01/23 16:58:47 by davgarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,6 @@ char	*expander2(char *post_dolar, int i, char **environment)
 
 int	find_dolar(t_expand *expand, char *command_buf, char **environment)
 {
-	printf("wtf\n");
 	if (command_buf[expand->i])
 		expand->i++;
 	if ((ft_isdigit(command_buf[expand->i]) == 1))
@@ -34,16 +33,17 @@ int	find_dolar(t_expand *expand, char *command_buf, char **environment)
 	else if (command_buf[expand->i] == '?')
 	{
 		expand->i++;
-		printf("d?%d   %d\n", g_c.dolar_q, expand->j);
 		return (expand->j += ft_strlen(ft_itoa(g_c.dolar_q)));
 	}
 	else if (command_buf[expand->i] == ' ' || command_buf[expand->i] == '\0')
 	{
-		printf("entra????");
 		if (command_buf[expand->i] == ' ')
+		{
 			expand->j++;
+		}
 		expand->i++;
-		return (expand->j++);
+		expand->j++;
+		return (0);
 	}
 	expand->k = expand->i;
 	while (ft_isalnum(command_buf[expand->i]) || command_buf[expand->i] == '_')
@@ -61,7 +61,6 @@ void	second_elif(t_expand *expand, char *command_buf, char **environment)
 		if (command_buf[expand->i] == '$')
 		{
 			find_dolar(expand, command_buf, environment);
-			printf("expand->i++;%i\n", expand->j++);
 		}
 		else
 		{
@@ -84,7 +83,6 @@ void	counter_reserv(t_expand *expand, char *command_buf, char **environment)
 		if (command_buf[expand->i] == '$')
 		{
 			find_dolar(expand, command_buf, environment);
-			printf("aferdolar-> i[%d,%c] j[%d]\n", expand->i, command_buf[expand->i], expand->j);
 		}
 		else if (command_buf[expand->i] == '\'')
 		{
@@ -98,11 +96,14 @@ void	counter_reserv(t_expand *expand, char *command_buf, char **environment)
 				expand->i++;
 		}
 		else if (command_buf[expand->i] == '\"')
+		{
 			second_elif(expand, command_buf, environment);
+		}
 		else if (command_buf[expand->i])
+		{
 			expand->i++;
-		else
 			expand->j++;
+		}
 	}
 }
 
@@ -110,12 +111,12 @@ char	*expan_token2(char *command_buf, char **environment)
 {
 	t_expand	expand;
 	char *new_str;
+	
 	memset(&expand, 0, sizeof(t_expand));
 	counter_reserv(&expand, command_buf, environment);
+	//new_str = NULL;
 	new_str = malloc_expand(&expand, command_buf, environment);
-	printf("newS: %d\n", ft_strlen(new_str));
-	printf("la j: %i\n", expand.j);
-	printf("la i: %i\n", expand.i);
+	//printf("la i: %i\n", expand.i);
 	//system("leaks -q minishell");
 	// printf("nw: %s\n", new_str);
 	
