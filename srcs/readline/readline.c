@@ -6,7 +6,7 @@
 /*   By: davgarci <davgarci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/06 16:55:15 by psegura-          #+#    #+#             */
-/*   Updated: 2023/01/22 20:25:25 by davgarci         ###   ########.fr       */
+/*   Updated: 2023/01/23 17:11:07 by davgarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,17 +27,16 @@ void	readline_create(void)
 			exit(0);
 		g_c.tokens = malloc(sizeof(char *) * (count_tokens(command_buf) + 1));
 		store_tokens(command_buf, g_c.tokens);
-		printf("-> imput\n");
-		ft_print_matrix(g_c.tokens);
+		ft_print_matrix(g_c.tokens, "before");
 		g_c.tok_count = 0;
 		while (g_c.tokens[g_c.tok_count])
 		{
-			printf("token al entrar [%s]\n", g_c.tokens[g_c.tok_count]);
+			// printf("token al entrar [%s]\n", g_c.tokens[g_c.tok_count]);
 			g_c.tokens[g_c.tok_count] = expan_token2(g_c.tokens[g_c.tok_count], g_c.env);
-			printf("token al salir [%s]\n", g_c.tokens[g_c.tok_count]);
+			// printf("token al salir [%s]\n", g_c.tokens[g_c.tok_count]);
 			g_c.tok_count++;
 		}
-		printf("-> out_put\n");
+		ft_print_matrix(g_c.tokens, "after");
 		// ft_print_matrix(g_c.tokens);
 		check_quotes(command_buf);
 		if (ft_strlen(command_buf) > 0)

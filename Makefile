@@ -6,7 +6,7 @@
 #    By: davgarci <davgarci@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/06 16:12:27 by psegura-          #+#    #+#              #
-#    Updated: 2023/01/22 20:04:53 by davgarci         ###   ########.fr        #
+#    Updated: 2023/01/23 19:07:55 by davgarci         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -38,6 +38,7 @@ SRCS =									\
 		srcs/utils/environment.c		\
 		srcs/readline/expand_token2.c	\
 		srcs/readline/malloc_expand_token.c	\
+		srcs/readline/copy_join.c \
 										\
 		srcs/builtins/builtins.c		\
 		srcs/builtins/cd.c				\
@@ -53,7 +54,7 @@ OBJS = $(SRCS:.c=.o)
 LIB = libft/libft.a
 
 CC = gcc
-CFLAGS	 = -Wall -Wextra -Werror #-g3 -fsanitize=address
+CFLAGS	 = -Wall -Wextra -Werror -g3 -fsanitize=address
 CFLAGS	+= -I inc
 CFLAGS	+= -I libft
 READLINE = -lreadline
