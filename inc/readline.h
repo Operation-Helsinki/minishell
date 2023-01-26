@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   readline.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: davgarci <davgarci@student.42.fr>          +#+  +:+       +#+        */
+/*   By: psegura- <psegura-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/10 22:16:46 by psegura-          #+#    #+#             */
-/*   Updated: 2023/01/23 16:21:12 by davgarci         ###   ########.fr       */
+/*   Updated: 2023/01/26 01:40:30 by psegura-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,8 @@
 # include "minishell.h"
 
 # define PROMPT "\033[0;32m➜  \033[0;36mShellhinki \033[1;33m✗ \033[0m"
+
+# define COMMANDS	100000
 
 typedef struct s_expand {
 	int		i;

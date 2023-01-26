@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   malloc_expand_token.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: davgarci <davgarci@student.42.fr>          +#+  +:+       +#+        */
+/*   By: psegura- <psegura-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/21 01:13:06 by davgarci          #+#    #+#             */
-/*   Updated: 2023/01/23 19:05:42 by davgarci         ###   ########.fr       */
+/*   Updated: 2023/01/24 16:32:40 by psegura-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ char	*cp_find_dolar(t_expand *expand, char *command_buf, char **environment, cha
 		expand->i++;
 	expand->n += ft_strlen(cp_expander2(command_buf + expand->k,
 				expand->i - expand->k, environment));
-	printf("STR3: %i\n", expand->j);
+	// printf("STR3: %i\n", expand->j);
 	new_str = copy_join(new_str, cp_expander2(command_buf + expand->k,
 		expand->i - expand->k, environment), expand);
 	return (new_str);
@@ -133,7 +133,7 @@ char	*malloc_expand(t_expand *expand, char *command_buf, char **environment)
 	expand->i = 0;
 	expand->n = 0;
 	new_str = (char *)malloc((sizeof(char)) * (expand->j + 1));
-	printf("MALLOC J: %i\n", expand->j);
+	// printf("MALLOC J: %i\n", expand->j);
 	new_str[expand->j] = '\0';
 	expand->j = 0;
 	new_str = copy_expanded(expand, command_buf, environment, new_str);

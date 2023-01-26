@@ -1,32 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   tokenizer.h                                        :+:      :+:    :+:   */
+/*   ft_strndup.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: psegura- <psegura-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/12 20:22:05 by psegura-          #+#    #+#             */
-/*   Updated: 2023/01/24 18:25:55 by psegura-         ###   ########.fr       */
+/*   Created: 2023/01/26 02:23:36 by psegura-          #+#    #+#             */
+/*   Updated: 2023/01/26 02:27:36 by psegura-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef TOKENIZER_H
-# define TOKENIZER_H
+#include "libft.h"
 
-# include "minishell.h"
+char	*ft_strndup(const char *s1, int len)
+{
+	char	*final;
+	int		i;
 
-typedef struct s_quotes {
-	int	s_count;
-	int	d_count;
-	int	i;
-}	t_quotes;
-
-/*__UTILS____*/
-int		check_quotes(const char *readline);
-
-/*__LOCATE_SYMBOLS____*/
-void	find_next_quote(const char *str, int *i, char quote);
-int		count_tokens(const char *str);
-void	store_tokens(const char *str, char **tokens);
-
-#endif
+	i = 0;
+	final = malloc(sizeof(char) * len + 1);
+	if (!final)
+		return (NULL);
+	while (s1[i] && i < len)
+	{
+		final[i] = s1[i];
+		i++;
+	}
+	final[i] = '\0';
+	return (final);
+}

@@ -1,32 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   tokenizer.h                                        :+:      :+:    :+:   */
+/*   me.c                                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: psegura- <psegura-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/12 20:22:05 by psegura-          #+#    #+#             */
-/*   Updated: 2023/01/24 18:25:55 by psegura-         ###   ########.fr       */
+/*   Created: 2023/01/26 00:27:58 by psegura-          #+#    #+#             */
+/*   Updated: 2023/01/26 00:31:11 by psegura-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef TOKENIZER_H
-# define TOKENIZER_H
+int	jajahola(void)
+{
+	static const char	*limots[] = {"<", "<<", ">", ">>", "|", 0};
 
-# include "minishell.h"
-
-typedef struct s_quotes {
-	int	s_count;
-	int	d_count;
-	int	i;
-}	t_quotes;
-
-/*__UTILS____*/
-int		check_quotes(const char *readline);
-
-/*__LOCATE_SYMBOLS____*/
-void	find_next_quote(const char *str, int *i, char quote);
-int		count_tokens(const char *str);
-void	store_tokens(const char *str, char **tokens);
-
-#endif
+	return (987);
+}

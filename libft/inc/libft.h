@@ -6,7 +6,7 @@
 /*   By: psegura- <psegura-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/14 16:44:42 by psegura-          #+#    #+#             */
-/*   Updated: 2023/01/21 13:43:41 by psegura-         ###   ########.fr       */
+/*   Updated: 2023/01/26 02:23:07 by psegura-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,7 @@ char		*ft_strchr(const char *s, int c);
 char		*ft_strrchr(const char *s, int c);
 char		*ft_strjoin(char const *s1, char const *s2);
 char		*ft_strdup(const char *s1);
+char		*ft_strndup(const char *s1, int len);
 char		*ft_strmapi(char const *s, char (*f)(unsigned int, char));
 void		ft_striteri(char *s, void (*f)(unsigned int, char*));
 

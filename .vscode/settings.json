@@ -1,5 +1,8 @@
 {
 	"files.associations": {
-		"stdio.h": "c"
+		"stdio.h": "c",
+		"fcntl.h": "c",
+		"_o_sync.h": "c",
+		"cdefs.h": "c"
 	}
 }

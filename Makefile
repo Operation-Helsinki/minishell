@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: davgarci <davgarci@student.42.fr>          +#+  +:+       +#+         #
+#    By: psegura- <psegura-@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/06 16:12:27 by psegura-          #+#    #+#              #
-#    Updated: 2023/01/23 19:07:55 by davgarci         ###   ########.fr        #
+#    Updated: 2023/01/25 23:55:08 by psegura-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -63,6 +63,7 @@ $(NAME): $(OBJS)
 	@make -C libft
 	@$(CC) $(CFLAGS) $(OBJS) $(LIB) $(READLINE) -o $(NAME)
 	@echo "$(CYAN) ❄️ Operation Helsinki Completed ❄️"
+	./minishell
 	
 all: $(NAME)
 
