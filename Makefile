@@ -6,7 +6,7 @@
 #    By: psegura- <psegura-@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/06 16:12:27 by psegura-          #+#    #+#              #
-#    Updated: 2023/01/25 23:55:08 by psegura-         ###   ########.fr        #
+#    Updated: 2023/01/27 18:51:25 by psegura-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -27,16 +27,15 @@ SRCS =									\
 										\
 		srcs/readline/readline.c		\
 										\
-										\
-		srcs/tokenizer/tokenizer.c		\
-		srcs/tokenizer/locate_simbols.c	\
+		srcs/tokenizer/store_tokens.c	\
+		srcs/tokenizer/store_tokens_utils.c	\
 		srcs/tokenizer/utils.c			\
 										\
 		srcs/executor/find_command.c	\
 										\
 		srcs/utils/errors.c				\
 		srcs/utils/environment.c		\
-		srcs/readline/expand_token2.c	\
+		srcs/readline/expand_token.c	\
 		srcs/readline/malloc_expand_token.c	\
 		srcs/readline/copy_join.c \
 										\

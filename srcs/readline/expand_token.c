@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   expand_token2.c                                    :+:      :+:    :+:   */
+/*   expand_token.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: davgarci <davgarci@student.42.fr>          +#+  +:+       +#+        */
+/*   By: psegura- <psegura-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/19 17:57:27 by davgarci          #+#    #+#             */
-/*   Updated: 2023/01/23 16:58:47 by davgarci         ###   ########.fr       */
+/*   Updated: 2023/01/27 18:55:34 by psegura-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,15 +110,10 @@ void	counter_reserv(t_expand *expand, char *command_buf, char **environment)
 char	*expan_token2(char *command_buf, char **environment)
 {
 	t_expand	expand;
-	char *new_str;
-	
+	char		*new_str;
+
 	memset(&expand, 0, sizeof(t_expand));
 	counter_reserv(&expand, command_buf, environment);
-	//new_str = NULL;
 	new_str = malloc_expand(&expand, command_buf, environment);
-	//printf("la i: %i\n", expand.i);
-	//system("leaks -q minishell");
-	// printf("nw: %s\n", new_str);
-	
 	return (new_str);
 }

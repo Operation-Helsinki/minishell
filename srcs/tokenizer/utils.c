@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: davgarci <davgarci@student.42.fr>          +#+  +:+       +#+        */
+/*   By: psegura- <psegura-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/12 20:22:43 by psegura-          #+#    #+#             */
-/*   Updated: 2023/01/23 17:01:20 by davgarci         ###   ########.fr       */
+/*   Updated: 2023/01/27 18:12:09 by psegura-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,10 +46,6 @@ int	check_quotes(const char *s)
 			q.i++;
 	}
 	if ((q.s_count % 2 != 0) || (q.d_count % 2 != 0))
-	{
-		//printf("no cerrado\n");
 		return (0);
-	}
-	//printf("cerrado\n");
 	return (1);
 }

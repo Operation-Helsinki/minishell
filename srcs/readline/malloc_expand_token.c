@@ -6,7 +6,7 @@
 /*   By: psegura- <psegura-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/21 01:13:06 by davgarci          #+#    #+#             */
-/*   Updated: 2023/01/24 16:32:40 by psegura-         ###   ########.fr       */
+/*   Updated: 2023/01/27 18:57:20 by psegura-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,8 @@ char	*cp_expander2(char *post_dolar, int i, char **environment)
 	return ("");
 }
 
-char	*cp_find_dolar(t_expand *expand, char *command_buf, char **environment, char *new_str)
+char	*cp_find_dolar(t_expand *expand, char *command_buf, char **environment,
+	char *new_str)
 {
 	expand->i++;
 	if ((ft_isdigit(command_buf[expand->i]) == 1))
@@ -38,7 +39,6 @@ char	*cp_find_dolar(t_expand *expand, char *command_buf, char **environment, cha
 	{
 		expand->i++;
 		expand->n += ft_strlen(ft_itoa(g_c.dolar_q));
-		
 		return (copy_join(new_str, ft_itoa(g_c.dolar_q), expand));
 	}
 	else if (command_buf[expand->i] == ' ' || command_buf[expand->i] == '\0')
@@ -59,13 +59,13 @@ char	*cp_find_dolar(t_expand *expand, char *command_buf, char **environment, cha
 		expand->i++;
 	expand->n += ft_strlen(cp_expander2(command_buf + expand->k,
 				expand->i - expand->k, environment));
-	// printf("STR3: %i\n", expand->j);
 	new_str = copy_join(new_str, cp_expander2(command_buf + expand->k,
-		expand->i - expand->k, environment), expand);
+				expand->i - expand->k, environment), expand);
 	return (new_str);
 }
 
-char	*cp_second_elif(t_expand *expand, char *command_buf, char **environment, char *new_str)
+char	*cp_second_elif(t_expand *expand, char *command_buf, char **environment,
+	char *new_str)
 {
 	expand->i++;
 	while (command_buf[expand->i] != '\"' && command_buf[expand->i])
@@ -88,7 +88,8 @@ char	*cp_second_elif(t_expand *expand, char *command_buf, char **environment, ch
 }
 
 /* n es el contador de new_str*/
-char	*copy_expanded(t_expand *expand, char *command_buf, char **environment, char *new_str)
+char	*copy_expanded(t_expand *expand, char *command_buf, char **environment,
+	char *new_str)
 {
 	expand->i = 0;
 	while (command_buf[expand->i])
@@ -128,15 +129,14 @@ char	*copy_expanded(t_expand *expand, char *command_buf, char **environment, cha
 
 char	*malloc_expand(t_expand *expand, char *command_buf, char **environment)
 {
-	char *new_str;
-	
+	char	*new_str;
+
 	expand->i = 0;
 	expand->n = 0;
 	new_str = (char *)malloc((sizeof(char)) * (expand->j + 1));
-	// printf("MALLOC J: %i\n", expand->j);
 	new_str[expand->j] = '\0';
 	expand->j = 0;
 	new_str = copy_expanded(expand, command_buf, environment, new_str);
 	free(command_buf);
-	return(new_str);
+	return (new_str);
 }
