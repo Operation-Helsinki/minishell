@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: davgarci <davgarci@student.42.fr>          +#+  +:+       +#+         #
+#    By: psegura- <psegura-@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/06 16:12:27 by psegura-          #+#    #+#              #
-#    Updated: 2023/01/23 19:07:55 by davgarci         ###   ########.fr        #
+#    Updated: 2023/01/27 18:51:25 by psegura-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -27,16 +27,15 @@ SRCS =									\
 										\
 		srcs/readline/readline.c		\
 										\
-										\
-		srcs/tokenizer/tokenizer.c		\
-		srcs/tokenizer/locate_simbols.c	\
+		srcs/tokenizer/store_tokens.c	\
+		srcs/tokenizer/store_tokens_utils.c	\
 		srcs/tokenizer/utils.c			\
 										\
 		srcs/executor/find_command.c	\
 										\
 		srcs/utils/errors.c				\
 		srcs/utils/environment.c		\
-		srcs/readline/expand_token2.c	\
+		srcs/readline/expand_token.c	\
 		srcs/readline/malloc_expand_token.c	\
 		srcs/readline/copy_join.c \
 										\
@@ -63,6 +62,7 @@ $(NAME): $(OBJS)
 	@make -C libft
 	@$(CC) $(CFLAGS) $(OBJS) $(LIB) $(READLINE) -o $(NAME)
 	@echo "$(CYAN) ❄️ Operation Helsinki Completed ❄️"
+	./minishell
 	
 all: $(NAME)
 

@@ -1,46 +1,42 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cd.c                                               :+:      :+:    :+:   */
+/*   store_tokens.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: psegura- <psegura-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/12 21:01:49 by psegura-          #+#    #+#             */
-/*   Updated: 2023/01/27 18:57:50 by psegura-         ###   ########.fr       */
+/*   Created: 2023/01/27 18:33:57 by psegura-          #+#    #+#             */
+/*   Updated: 2023/01/27 18:43:24 by psegura-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-int	ft_cd(char **tokens, char **env)
+void	store_tokens(const char *str, char **tokens)
 {
-	char		*path;
-	int			i;
+	t_count	c;
+	int		len;
 
-	i = 1;
-	path = tokens[i];
-	if (!path)
-	{	
-		while (env[i])
-		{
-			if (ft_strncmp("HOME=", env[i], 5) == 0)
-				chdir(env[i] + 5);
-			i++;
-		}
-	}
-	else if (chdir(path) == -1)
-		ft_print_error(*tokens);
-	else
+	ft_memset(&c, 0, sizeof(t_count));
+	while (str[c.i])
 	{
-		i = 0;
-		while (tokens[i])
+		main_while(str, &c);
+		len = c.i - c.j;
+		if (len != 0)
 		{
-			path = ft_strjoin(path, tokens[i]);
-			i++;
-			if (tokens[i])
-				path = ft_strjoin(path, " ");
-			free(path);
+			tokens[c.k] = ft_strndup(str + c.j, len);
+			c.k++;
 		}
+		c.j = c.i;
+		if (char_is_symbol(str[c.i], ">|<") == 1)
+		{
+			if_char_is_symbol(str, &c, &len);
+			tokens[c.k] = ft_strndup(str + c.j, len);
+			c.k++;
+		}
+		if (str[c.i])
+			c.i++;
+		c.j = c.i;
 	}
-	return (0);
+	tokens[c.k] = NULL;
 }

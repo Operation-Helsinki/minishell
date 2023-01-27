@@ -1,13 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   tokenizer.c                                        :+:      :+:    :+:   */
+/*   ft_strndup.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: psegura- <psegura-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/12 20:22:43 by psegura-          #+#    #+#             */
-/*   Updated: 2023/01/15 18:18:42 by psegura-         ###   ########.fr       */
+/*   Created: 2023/01/26 02:23:36 by psegura-          #+#    #+#             */
+/*   Updated: 2023/01/26 02:27:36 by psegura-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell.h"
+#include "libft.h"
+
+char	*ft_strndup(const char *s1, int len)
+{
+	char	*final;
+	int		i;
+
+	i = 0;
+	final = malloc(sizeof(char) * len + 1);
+	if (!final)
+		return (NULL);
+	while (s1[i] && i < len)
+	{
+		final[i] = s1[i];
+		i++;
+	}
+	final[i] = '\0';
+	return (final);
+}
