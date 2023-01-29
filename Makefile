@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: psegura- <psegura-@student.42.fr>          +#+  +:+       +#+         #
+#    By: davgarci <davgarci@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/06 16:12:27 by psegura-          #+#    #+#              #
-#    Updated: 2023/01/27 18:51:25 by psegura-         ###   ########.fr        #
+#    Updated: 2023/01/28 13:23:41 by davgarci         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -32,6 +32,7 @@ SRCS =									\
 		srcs/tokenizer/utils.c			\
 										\
 		srcs/executor/find_command.c	\
+		srcs/executor/executor.c	\
 										\
 		srcs/utils/errors.c				\
 		srcs/utils/environment.c		\
@@ -53,7 +54,7 @@ OBJS = $(SRCS:.c=.o)
 LIB = libft/libft.a
 
 CC = gcc
-CFLAGS	 = -Wall -Wextra -Werror -g3 -fsanitize=address
+CFLAGS	 = -Wall -Wextra -Werror -g3 #-fsanitize=address
 CFLAGS	+= -I inc
 CFLAGS	+= -I libft
 READLINE = -lreadline

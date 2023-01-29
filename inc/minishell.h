@@ -6,7 +6,7 @@
 /*   By: davgarci <davgarci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/05 20:41:16 by psegura-          #+#    #+#             */
-/*   Updated: 2023/01/21 01:32:05 by davgarci         ###   ########.fr       */
+/*   Updated: 2023/01/29 23:27:12 by davgarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,12 +41,17 @@
 /*__LIBFT_________*/
 # include "../libft/inc/libft.h"
 
+# define READ_END	0
+# define WRITE_END	1
+
 typedef struct s_cosas {
 	char	**env;
 	char	**tokens;
 	int		tok_count;
 	int		flag;
+	int		count_pipes;
 	int		dolar_q;
+	int		fd[2];
 }	t_cosas;
 
 t_cosas	g_c;
