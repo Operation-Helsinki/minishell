@@ -6,7 +6,7 @@
 /*   By: psegura- <psegura-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/27 13:15:45 by psegura-          #+#    #+#             */
-/*   Updated: 2022/08/15 02:55:45 by psegura-         ###   ########.fr       */
+/*   Updated: 2023/01/31 19:09:05 by psegura-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,15 +23,17 @@
  * @return A pointer to a new string that is the result of the concatenation
  * of s1 and s2. 
  */
-char	*ft_strjoin(char const *s1, char const *s2)
+char	*ft_strjoin(char *s1, char *s2)
 {
 	char	*final;
-	size_t	l_s1;
-	size_t	l_total;
-	size_t	i;
+	int		l_s1;
+	int		l_total;
+	int		i;
 
-	if (s1 == NULL)
-		return (NULL);
+	if (s1 == NULL && s2)
+		return ((char *)s2);
+	if (s2 == NULL && s1)
+		return ((char *)s1);
 	l_s1 = ft_strlen(s1);
 	l_total = l_s1 + ft_strlen(s2);
 	final = ft_calloc(sizeof(char), l_total + 1);

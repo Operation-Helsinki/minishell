@@ -6,7 +6,7 @@
 /*   By: psegura- <psegura-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/12 20:22:05 by psegura-          #+#    #+#             */
-/*   Updated: 2023/01/27 18:40:12 by psegura-         ###   ########.fr       */
+/*   Updated: 2023/01/31 19:25:06 by psegura-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,5 +44,10 @@ int		check_quotes(const char *readline);
 void	find_next_quote(const char *str, int *i, char quote);
 int		count_tokens(const char *str);
 void	store_tokens(const char *str, char **tokens);
+
+/*__TOKENS_TO_PIPAS____*/
+int		count_pipas(char **tokens);
+int		double_symbols(char **tokens);
+char	**tokens_to_pipas(char **tokens);
 
 #endif
