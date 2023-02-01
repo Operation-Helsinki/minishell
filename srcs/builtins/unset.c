@@ -6,7 +6,7 @@
 /*   By: psegura- <psegura-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/12 21:02:08 by psegura-          #+#    #+#             */
-/*   Updated: 2023/01/21 22:10:18 by psegura-         ###   ########.fr       */
+/*   Updated: 2023/02/01 01:40:27 by psegura-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,17 +28,24 @@ static int	check_syntax(char *str)
 	return (1);
 }
 
-int	ft_unset(char **env, char *str)
+int	ft_unset(char **env, char **args)
 {
 	int		pos;
 	char	*to_find;
+	int		i;
 
-	if (check_syntax(str) == 0)
-		return (printf("export: %s: not a valid identifier\n", str));
-	to_find = ft_strjoin(str, "=");
-	pos = ft_locate_str_in_matrix(env, to_find);
-	free(to_find);
-	g_c.env = ft_delete_row_matrix(env, pos);
+	i = 1;
+	while (args[i])
+	{
+		if (check_syntax(args[i]) == 0)
+			return (printf("export: %s: not a valid identifier\n", args[i]));
+		printf("DELETE: [%s]\n", args[i]);
+		to_find = ft_strjoin(args[i], "=");
+		pos = ft_locate_str_in_matrix(g_c.env, to_find);
+		free(to_find);
+		g_c.env = ft_delete_row_matrix(g_c.env, pos);
+		i++;
+	}
 	ft_free_matrix(env);
 	return (0);
 }

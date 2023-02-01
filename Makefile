@@ -6,7 +6,7 @@
 #    By: psegura- <psegura-@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/06 16:12:27 by psegura-          #+#    #+#              #
-#    Updated: 2023/01/31 19:08:43 by psegura-         ###   ########.fr        #
+#    Updated: 2023/02/01 15:04:03 by psegura-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -55,7 +55,7 @@ OBJS = $(SRCS:.c=.o)
 LIB = libft/libft.a
 
 CC = gcc
-CFLAGS	 = -Wall -Wextra -Werror -g3 -fsanitize=address
+CFLAGS	 = -Wall -Wextra -Werror -g3 #-fsanitize=address
 CFLAGS	+= -I inc
 CFLAGS	+= -I libft
 READLINE = -lreadline
@@ -64,7 +64,6 @@ $(NAME): $(OBJS)
 	@make -C libft
 	@$(CC) $(CFLAGS) $(OBJS) $(LIB) $(READLINE) -o $(NAME)
 	@echo "$(CYAN) ❄️ Operation Helsinki Completed ❄️"
-	./minishell
 	
 all: $(NAME)
 
