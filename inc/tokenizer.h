@@ -6,7 +6,7 @@
 /*   By: psegura- <psegura-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/12 20:22:05 by psegura-          #+#    #+#             */
-/*   Updated: 2023/01/31 19:25:06 by psegura-         ###   ########.fr       */
+/*   Updated: 2023/02/02 22:48:28 by psegura-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,5 +49,6 @@ void	store_tokens(const char *str, char **tokens);
 int		count_pipas(char **tokens);
 int		double_symbols(char **tokens);
 char	**tokens_to_pipas(char **tokens);
+int		token_is_symbol(char *token);
 
 #endif

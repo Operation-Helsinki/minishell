@@ -6,7 +6,7 @@
 /*   By: psegura- <psegura-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/30 17:08:20 by psegura-          #+#    #+#             */
-/*   Updated: 2023/01/31 19:53:38 by psegura-         ###   ########.fr       */
+/*   Updated: 2023/02/03 02:03:17 by psegura-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -130,5 +130,7 @@ int	double_symbols(char **tokens)
 			return (1);
 		i++;
 	}
+	if (tokens[i - 1] && token_is_symbol(tokens[i - 1]) == 1)
+		return (1);
 	return (0);
 }
