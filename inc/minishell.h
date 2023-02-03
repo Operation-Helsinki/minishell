@@ -6,7 +6,7 @@
 /*   By: psegura- <psegura-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/05 20:41:16 by psegura-          #+#    #+#             */
-/*   Updated: 2023/02/01 18:12:38 by psegura-         ###   ########.fr       */
+/*   Updated: 2023/02/03 02:07:32 by psegura-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,9 @@
 
 /*__UTILS_________*/
 # include "utils.h"
+
+/*__ERROR_MESSAGES_________*/
+# include "error_messages.h"
 
 /*__LIBFT_________*/
 # include "../libft/inc/libft.h"

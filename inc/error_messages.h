@@ -1,26 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   executor.h                                         :+:      :+:    :+:   */
+/*   error_messages.h                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: psegura- <psegura-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/11 10:25:30 by psegura-          #+#    #+#             */
-/*   Updated: 2023/02/03 01:40:14 by psegura-         ###   ########.fr       */
+/*   Created: 2023/02/03 02:04:25 by psegura-          #+#    #+#             */
+/*   Updated: 2023/02/03 02:09:02 by psegura-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef EXECUTOR_H
-# define EXECUTOR_H
+#ifndef ERROR_MESSAGES_H
+# define ERROR_MESSAGES_H
 
-# include "minishell.h"
-
-# define SPACE ' '
-
-char	*check_path(void);
-char	*only_path(char *cmd);
-void	ft_exec(const char *argv);
-void	pipas_handler(void);
-void	piperrak(int i);
-
+# define BAD_SYMBOLS "Incorrect ammount or position of symbols\n"
+# define OPEN_QUOTES "THE QUOTES ARE NOT CLOSED\n\n"
 #endif
