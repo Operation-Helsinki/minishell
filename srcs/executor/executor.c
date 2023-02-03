@@ -6,7 +6,7 @@
 /*   By: psegura- <psegura-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/27 21:41:24 by davgarci          #+#    #+#             */
-/*   Updated: 2023/02/03 03:52:08 by psegura-         ###   ########.fr       */
+/*   Updated: 2023/02/03 23:38:04 by psegura-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,31 +15,20 @@
 void	pipas_handler(void)
 {
 	int	i;
-	int	pid;
 	int	status;
-	
+	int	is_builtin;
+	int	pid;
+
 	i = 0;
-	// printf("N_pipas: [%d]\n", g_c.pipas);
 	if (g_c.pipas == 0)
 	{
-		pid = fork();
-		if (pid == 0)
+		is_builtin = builtins(g_c.tokens[i]);
+		if (is_builtin == NONE)
 		{
-			if (builtins(g_c.tokens[i]) != 42)
-				exit(0);
-			else
-			{
-				// ft_putstr_fd("ft_exec 1 cmd\n", 2);
+			pid = fork();
+			if (pid == 0)
 				ft_exec(g_c.tokens[i]);
-			}
-		}
-		else
-		{
-			// ft_putstr_fd("father 1 cmd\n", 2);
-			waitpid(pid, &status, 0);
-			dup2(g_c.fd[READ_END], STDIN_FILENO);
-			close(g_c.fd[WRITE_END]);
-			close(g_c.fd[READ_END]);
+			waitpid(-1, &status, 0);
 		}
 	}
 	else
@@ -50,38 +39,36 @@ void	pipas_handler(void)
 				piperrak(i);
 			i++;
 		}
+		i = 0;
+		while (i < g_c.pipas + 1)
+		{
+			waitpid(-1, &status, 0);
+			i++;
+		}
 	}
 }
 
 void piperrak(int i)
 {
 	pid_t pid;
-	int status;
 
-	if (pipe(g_c.fd) == 0)
+	if (pipe(g_c.fd) == -1)
+		exit(-1);
+	pid = fork();
+	if (pid == 0)
 	{
-		pid = fork();
-		if (pid == 0)
-		{
-			if (i != g_c.pipas * 2)
-				dup2(g_c.fd[WRITE_END], STDOUT_FILENO);
-			if (builtins(g_c.tokens[i]) != 42)
-				exit(0);
-			else
-			{
-				// ft_putstr_fd("\nft_exec +1 cmd\n", 2);
-				ft_exec(g_c.tokens[i]);
-			}
-		}
-		else
-		{
-			waitpid(pid, &status, 0);
-			// ft_putstr_fd("\npadre +1 cmd\n", 2);
-			dup2(g_c.fd[READ_END], STDIN_FILENO);
-			close(g_c.fd[WRITE_END]);
-			close(g_c.fd[READ_END]);
-		}
+		if (i != g_c.pipas * 2)
+			dup2(g_c.fd[WRITE_END], STDOUT_FILENO);
+		if (builtins(g_c.tokens[i]) != NONE)
+			exit(0);
+		ft_exec(g_c.tokens[i]);
 	}
 	else
-		exit(-1);
+	{
+		dup2(g_c.fd[READ_END], STDIN_FILENO);
+		if (g_c.fd[WRITE_END] != STDIN_FILENO)
+			close(g_c.fd[WRITE_END]);
+		if (g_c.fd[READ_END] != STDOUT_FILENO)
+			close(g_c.fd[READ_END]);
+	}
 }

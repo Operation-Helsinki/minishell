@@ -6,7 +6,7 @@
 /*   By: psegura- <psegura-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/11 10:26:54 by psegura-          #+#    #+#             */
-/*   Updated: 2023/02/03 00:58:30 by psegura-         ###   ########.fr       */
+/*   Updated: 2023/02/03 14:08:32 by psegura-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,13 +61,9 @@ void	ft_exec(const char *argv)
 	char	**cmd;
 	char	*path;
 
-	// printf("entra\n");
-	// ft_putstr_fd("ENTRA\n", 2);
 	cmd = ft_split(argv, SPACE);
 	path = only_path(cmd[0]);
-	// ft_putstr_fd(path, 2);
-	// ft_putstr_fd(cmd[0], 2);
-	// ft_putstr_fd(cmd[1], 2);
 	if (execve(path, cmd, g_c.env) == -1)
 		ft_perror("");
+	exit(0);
 }

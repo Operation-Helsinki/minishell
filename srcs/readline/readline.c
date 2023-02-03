@@ -6,7 +6,7 @@
 /*   By: psegura- <psegura-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/06 16:55:15 by psegura-          #+#    #+#             */
-/*   Updated: 2023/02/03 03:51:31 by psegura-         ###   ########.fr       */
+/*   Updated: 2023/02/03 23:49:45 by psegura-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,13 +36,18 @@ void	expand_while(void)
 void	readline_create(void)
 {
 	const char	*command_buf;
-	int	pid;
 
 	while (1)
 	{
 		command_buf = (const char *)readline(PROMPT);
 		if (!command_buf)
+		{
+			dprintf(2, "agur");
 			exit(0);
+		}
+		command_buf = ft_strtrim(command_buf, " ");
+		if (!*command_buf) //TODO: eliminar espacios extras
+			continue;
 		if (read_exit(command_buf))
 			break ;
 		if (ft_strlen(command_buf) > 0)
@@ -62,11 +67,8 @@ void	readline_create(void)
 			continue ;
 		}
 		g_c.tokens = tokens_to_pipas(g_c.tokens);
+		ft_print_matrix(g_c.tokens, "PIPAS");
 		expand_while();
-		pid = fork();
-		if (pid == 0)
-		{
-			pipas_handler();
-		}
+		pipas_handler();	
 	}
 }
