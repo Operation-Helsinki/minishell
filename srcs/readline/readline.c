@@ -6,7 +6,7 @@
 /*   By: psegura- <psegura-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/06 16:55:15 by psegura-          #+#    #+#             */
-/*   Updated: 2023/02/04 21:10:34 by psegura-         ###   ########.fr       */
+/*   Updated: 2023/02/04 23:42:48 by psegura-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,37 +39,22 @@ void	readline_create(void)
 
 	while (1)
 	{
-		// if (command_buf)
-		// 	free((void *)command_buf);
-		command_buf = (const char *)readline(PROMPT);
+		command_buf = ft_strtrim((const char *)readline(PROMPT), " ");
 		if (!command_buf)
-		{
-			dprintf(2, "agur");
 			exit(0);
-		}
-		command_buf = ft_strtrim(command_buf, " ");
-		if (!*command_buf) //TODO: eliminar espacios extras
-			continue;
+		if (!*command_buf)
+			continue ;
 		if (read_exit(command_buf))
 			break ;
 		if (ft_strlen(command_buf) > 0)
 			add_history(command_buf);
 		if (!check_quotes(command_buf))
-		{
-			printf(OPEN_QUOTES);
-			free((char *)command_buf);
 			continue ;
-		}
 		g_c.tokens = malloc(sizeof(char *) * (count_tokens(command_buf) + 1));
 		store_tokens(command_buf, g_c.tokens);
 		if (double_symbols(g_c.tokens) == 1)
-		{
-			printf(BAD_SYMBOLS);
-			ft_free_matrix(g_c.tokens);
 			continue ;
-		}
 		g_c.tokens = tokens_to_pipas(g_c.tokens);
-		// ft_print_matrix(g_c.tokens, "PIPAS");
 		expand_while();
 		pipas_handler();
 		ft_free_matrix(g_c.tokens);

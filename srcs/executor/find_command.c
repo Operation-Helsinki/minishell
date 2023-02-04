@@ -6,7 +6,7 @@
 /*   By: psegura- <psegura-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/11 10:26:54 by psegura-          #+#    #+#             */
-/*   Updated: 2023/02/03 14:08:32 by psegura-         ###   ########.fr       */
+/*   Updated: 2023/02/04 22:12:01 by psegura-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,8 +60,21 @@ void	ft_exec(const char *argv)
 {
 	char	**cmd;
 	char	*path;
+	char	**what_cmd;
+	int		i;
 
 	cmd = ft_split(argv, SPACE);
+	what_cmd = ft_split(cmd[0], '/');
+	i = 0;
+	free((void *)argv);
+	while (what_cmd[i])
+	{
+		if (cmd[0])
+			free(cmd[0]);
+		cmd[0] = ft_strdup(what_cmd[i]);
+		i++;
+	}
+	ft_free_matrix(what_cmd);
 	path = only_path(cmd[0]);
 	if (execve(path, cmd, g_c.env) == -1)
 		ft_perror("");
