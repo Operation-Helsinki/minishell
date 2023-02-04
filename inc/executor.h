@@ -6,7 +6,7 @@
 /*   By: psegura- <psegura-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/11 10:25:30 by psegura-          #+#    #+#             */
-/*   Updated: 2023/02/03 01:40:14 by psegura-         ###   ########.fr       */
+/*   Updated: 2023/02/03 14:18:10 by psegura-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 # include "minishell.h"
 
 # define SPACE ' '
+# define NONE 42
 
 char	*check_path(void);
 char	*only_path(char *cmd);

@@ -6,7 +6,7 @@
 #    By: psegura- <psegura-@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/06 16:12:27 by psegura-          #+#    #+#              #
-#    Updated: 2023/02/03 03:49:55 by psegura-         ###   ########.fr        #
+#    Updated: 2023/02/04 00:00:05 by psegura-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -55,7 +55,7 @@ OBJS = $(SRCS:.c=.o)
 LIB = libft/libft.a
 
 CC = gcc
-CFLAGS	 = -Wall -Wextra -Werror -g3 #-fsanitize=address
+CFLAGS	 = -Wall -Wextra -Werror -g3 -fsanitize=address
 CFLAGS	+= -I inc
 CFLAGS	+= -I libft
 READLINE = -lreadline
