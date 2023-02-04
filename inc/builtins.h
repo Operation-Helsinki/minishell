@@ -6,7 +6,7 @@
 /*   By: psegura- <psegura-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/12 21:03:40 by psegura-          #+#    #+#             */
-/*   Updated: 2023/02/04 18:20:41 by psegura-         ###   ########.fr       */
+/*   Updated: 2023/02/04 23:39:31 by psegura-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,11 @@
 # include "minishell.h"
 
 int		builtins(char *str);
+
+/*__SIGNALS___*/
+void	sig_init(void);
+void	execution_signal_init(void);
+void	execution_signal_hadler(int sig);
 
 /*__PWD_____*/
 int		ft_pwd(char **commands);

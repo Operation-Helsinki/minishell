@@ -6,7 +6,7 @@
 #    By: psegura- <psegura-@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/06 16:12:27 by psegura-          #+#    #+#              #
-#    Updated: 2023/02/04 18:04:02 by psegura-         ###   ########.fr        #
+#    Updated: 2023/02/04 23:39:12 by psegura-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,36 +20,39 @@ WHITE	=	\033[0m
 
 NAME = minishell
 
-SRCS =									\
-		srcs/main.c						\
-										\
-		srcs/intro/intro.c				\
-										\
-		srcs/readline/readline.c		\
-										\
-		srcs/tokenizer/store_tokens.c	\
-		srcs/tokenizer/store_tokens_utils.c	\
-		srcs/tokenizer/tokens_to_pipas.c	\
-		srcs/tokenizer/utils.c			\
-										\
-		srcs/executor/find_command.c	\
-		srcs/executor/executor.c	\
-										\
-		srcs/utils/errors.c				\
-		srcs/utils/environment.c		\
-		srcs/readline/expand_token.c	\
-		srcs/readline/malloc_expand_token.c	\
+SRCS =											\
+		srcs/main.c								\
+												\
+		srcs/intro/intro.c						\
+												\
+		srcs/readline/readline.c				\
+												\
+		srcs/tokenizer/store_tokens.c			\
+		srcs/tokenizer/store_tokens_utils.c		\
+		srcs/tokenizer/tokens_to_pipas.c		\
+		srcs/tokenizer/utils.c					\
+												\
+		srcs/executor/find_command.c			\
+		srcs/executor/executor.c				\
+												\
+		srcs/utils/errors.c						\
+		srcs/utils/environment.c				\
+		srcs/readline/expand_token.c			\
+		srcs/readline/malloc_expand_token.c		\
 		srcs/readline/malloc_expand_token_aux.c	\
-		srcs/readline/copy_join.c \
-										\
-		srcs/builtins/builtins.c		\
-		srcs/builtins/cd.c				\
-		srcs/builtins/echo.c			\
-		srcs/builtins/env.c				\
-		srcs/builtins/exit.c			\
-		srcs/builtins/export.c			\
-		srcs/builtins/pwd.c				\
-		srcs/builtins/unset.c			\
+		srcs/readline/copy_join.c 				\
+												\
+		srcs/builtins/builtins.c				\
+		srcs/builtins/cd.c						\
+		srcs/builtins/echo.c					\
+		srcs/builtins/env.c						\
+		srcs/builtins/exit.c					\
+		srcs/builtins/export.c					\
+		srcs/builtins/pwd.c						\
+		srcs/builtins/unset.c					\
+												\
+		srcs/builtins/signals.c					\
+		
 
 OBJS = $(SRCS:.c=.o)
 
