@@ -6,7 +6,7 @@
 /*   By: psegura- <psegura-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/12 21:01:57 by psegura-          #+#    #+#             */
-/*   Updated: 2023/02/01 21:50:18 by psegura-         ###   ########.fr       */
+/*   Updated: 2023/02/04 17:58:50 by psegura-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,9 @@ void	ft_print_env(char **matrix)
 		printf("%s\n", matrix[i]);
 }
 
-int	ft_env(char **env)
+int	ft_env(char **env, char **commands)
 {
 	ft_print_env(env);
+	ft_free_matrix(commands);
 	return (0);
 }

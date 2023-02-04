@@ -16,16 +16,18 @@
 # include "minishell.h"
 
 int		builtins(char *str);
-/*__CD______*/
-int		ft_cd(char **tokens, char **env);
 
-/*__ECHO____*/
-int		ft_echo(char **tokens);
+/*__PWD_____*/
+int		ft_pwd(char **commands);
 
 /*__ENV_____*/
-int		ft_env(char **env);
+int		ft_env(char **env, char **commands);
 
-/*__EXIT____*/
+/*__CD______*/
+int		ft_cd(char **env, char **commands);
+
+/*__ECHO____*/
+int		ft_echo(char **commands);
 
 /*__EXPORT__*/
 int		ft_export(char **env, char **args);
@@ -40,5 +42,7 @@ void	execution_signal_hadler(int sig);
 
 /*__UNSET___*/
 int		ft_unset(char **env, char **args);
+
+/*__EXIT____*/
 
 #endif
