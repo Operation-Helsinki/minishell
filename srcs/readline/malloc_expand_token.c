@@ -6,25 +6,11 @@
 /*   By: psegura- <psegura-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/21 01:13:06 by davgarci          #+#    #+#             */
-/*   Updated: 2023/01/27 18:57:20 by psegura-         ###   ########.fr       */
+/*   Updated: 2023/02/04 16:46:36 by psegura-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
-
-char	*cp_expander2(char *post_dolar, int i, char **environment)
-{
-	while (*environment)
-	{
-		if (ft_strncmp(post_dolar, *environment, i) == 0
-			&& ft_strncmp(*environment + i, "=", 1) == 0)
-		{
-			return (*environment + i + 1);
-		}
-		environment++;
-	}
-	return ("");
-}
 
 char	*cp_find_dolar(t_expand *expand, char *command_buf, char **environment,
 	char *new_str)
@@ -43,15 +29,7 @@ char	*cp_find_dolar(t_expand *expand, char *command_buf, char **environment,
 	}
 	else if (command_buf[expand->i] == ' ' || command_buf[expand->i] == '\0')
 	{
-		expand->i++;
-		expand->j++;
-		new_str[expand->n] = '$';
-		expand->n++;
-		if (command_buf[expand->i - 1] == ' ')
-		{
-			new_str[expand->n] = ' ';
-			expand->n++;
-		}
+		cp_find_dolar_aux(expand, command_buf, new_str);
 		return (new_str);
 	}
 	expand->k = expand->i;
@@ -71,9 +49,7 @@ char	*cp_second_elif(t_expand *expand, char *command_buf, char **environment,
 	while (command_buf[expand->i] != '\"' && command_buf[expand->i])
 	{
 		if (command_buf[expand->i] == '$')
-		{
 			new_str = cp_find_dolar(expand, command_buf, environment, new_str);
-		}
 		else
 		{
 			new_str[expand->n] = command_buf[expand->i];
@@ -87,7 +63,6 @@ char	*cp_second_elif(t_expand *expand, char *command_buf, char **environment,
 	return (new_str);
 }
 
-/* n es el contador de new_str*/
 char	*copy_expanded(t_expand *expand, char *command_buf, char **environment,
 	char *new_str)
 {
@@ -95,26 +70,11 @@ char	*copy_expanded(t_expand *expand, char *command_buf, char **environment,
 	while (command_buf[expand->i])
 	{
 		if (command_buf[expand->i] == '$')
-		{
 			new_str = cp_find_dolar(expand, command_buf, environment, new_str);
-		}
 		else if (command_buf[expand->i] == '\'')
-		{
-			expand->i++;
-			while (command_buf[expand->i] != '\'' && command_buf[expand->i])
-			{
-				new_str[expand->n] = command_buf[expand->i];
-				expand->j++;
-				expand->i++;
-				expand->n++;
-			}
-			if (command_buf[expand->i])
-				expand->i++;
-		}
+			copy_expanded_aux(expand, command_buf, new_str);
 		else if (command_buf[expand->i] == '\"')
-		{
 			new_str = cp_second_elif(expand, command_buf, environment, new_str);
-		}
 		else
 		{
 			new_str[expand->n] = command_buf[expand->i];

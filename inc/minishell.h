@@ -6,7 +6,7 @@
 /*   By: psegura- <psegura-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/05 20:41:16 by psegura-          #+#    #+#             */
-/*   Updated: 2023/02/03 02:07:32 by psegura-         ###   ########.fr       */
+/*   Updated: 2023/02/04 21:13:31 by psegura-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,6 @@
 
 /*__READLINE______*/
 # include "readline.h"
-
-/*__MAP_READLINE__*/
-# include "map_readline.h"
 
 /*__TOKENIZER_____*/
 # include "tokenizer.h"
@@ -55,6 +52,8 @@ typedef struct s_cosas {
 	int		pipas;
 	int		dolar_q;
 	int		fd[2];
+	int		pipe_prev[2];
+	int		pipe_current[2];
 }	t_cosas;
 
 t_cosas	g_c;

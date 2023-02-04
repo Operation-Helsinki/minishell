@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: davgarci <davgarci@student.42.fr>          +#+  +:+       +#+        */
+/*   By: psegura- <psegura-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/05 20:37:31 by psegura-          #+#    #+#             */
-/*   Updated: 2023/01/27 21:47:01 by davgarci         ###   ########.fr       */
+/*   Updated: 2023/02/04 21:09:39 by psegura-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,5 +23,5 @@ int	main(int argc, char **argv, char **env)
 	return (0);
 }
 
+	// ft_print_header();
 	// system("leaks -q minishell");
-	//ft_print_header();

@@ -6,7 +6,7 @@
 /*   By: psegura- <psegura-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/15 15:57:51 by davgarci          #+#    #+#             */
-/*   Updated: 2023/02/03 02:16:49 by psegura-         ###   ########.fr       */
+/*   Updated: 2023/02/04 21:13:54 by psegura-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,13 +20,11 @@ int	builtins(char *str)
 	if (!str || !commands)
 		return (1);
 	else if (ft_strcmp(commands[0], "pwd") == 0)
-		return (ft_pwd());
+		return (ft_pwd(commands));
 	else if (ft_strcmp(str, "env") == 0)
-		return (ft_env(g_c.env));
-	// else if (ft_strcmp(commands[0], "exit") == 0)
-	// 	return (ft_exit(&tokens[1], t));
+		return (ft_env(g_c.env, commands));
 	else if (ft_strcmp(commands[0], "cd") == 0)
-		return (ft_cd(commands, g_c.env));
+		return (ft_cd(g_c.env, commands));
 	else if (ft_strcmp(commands[0], "echo") == 0)
 		return (ft_echo(commands));
 	else if (ft_strcmp(commands[0], "export") == 0)
@@ -34,5 +32,11 @@ int	builtins(char *str)
 	else if (ft_strcmp(commands[0], "unset") == 0)
 		return (ft_unset(g_c.env, commands));
 	else
+	{
+		free(commands);
 		return (42);
+	}
 }
+
+	// else if (ft_strcmp(commands[0], "exit") == 0)
+	// 	return (ft_exit(&tokens[1], t));

@@ -6,7 +6,7 @@
 /*   By: psegura- <psegura-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/06 16:55:15 by psegura-          #+#    #+#             */
-/*   Updated: 2023/02/03 23:49:45 by psegura-         ###   ########.fr       */
+/*   Updated: 2023/02/04 21:10:34 by psegura-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,8 @@ void	readline_create(void)
 
 	while (1)
 	{
+		// if (command_buf)
+		// 	free((void *)command_buf);
 		command_buf = (const char *)readline(PROMPT);
 		if (!command_buf)
 		{
@@ -67,8 +69,9 @@ void	readline_create(void)
 			continue ;
 		}
 		g_c.tokens = tokens_to_pipas(g_c.tokens);
-		ft_print_matrix(g_c.tokens, "PIPAS");
+		// ft_print_matrix(g_c.tokens, "PIPAS");
 		expand_while();
-		pipas_handler();	
+		pipas_handler();
+		ft_free_matrix(g_c.tokens);
 	}
 }
