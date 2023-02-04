@@ -6,7 +6,7 @@
 /*   By: psegura- <psegura-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/19 17:57:27 by davgarci          #+#    #+#             */
-/*   Updated: 2023/01/27 18:55:34 by psegura-         ###   ########.fr       */
+/*   Updated: 2023/02/04 16:12:53 by psegura-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,9 +81,7 @@ void	counter_reserv(t_expand *expand, char *command_buf, char **environment)
 	while (command_buf[expand->i])
 	{
 		if (command_buf[expand->i] == '$')
-		{
 			find_dolar(expand, command_buf, environment);
-		}
 		else if (command_buf[expand->i] == '\'')
 		{
 			expand->i++;
@@ -93,12 +91,10 @@ void	counter_reserv(t_expand *expand, char *command_buf, char **environment)
 				expand->i++;
 			}
 			if (command_buf[expand->i])
-				expand->i++;
+			expand->i++;
 		}
 		else if (command_buf[expand->i] == '\"')
-		{
 			second_elif(expand, command_buf, environment);
-		}
 		else if (command_buf[expand->i])
 		{
 			expand->i++;

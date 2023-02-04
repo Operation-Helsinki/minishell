@@ -6,7 +6,7 @@
 /*   By: psegura- <psegura-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/12 21:01:49 by psegura-          #+#    #+#             */
-/*   Updated: 2023/01/31 23:10:44 by psegura-         ###   ########.fr       */
+/*   Updated: 2023/02/04 17:59:58 by psegura-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,13 +22,13 @@
  * @return The return value of the function is the return value of the last
  * command executed.
  */
-int	ft_cd(char **tokens, char **env)
+int	ft_cd(char **env, char **commands)
 {
 	char		*path;
 	int			i;
 
 	i = 1;
-	path = tokens[i];
+	path = commands[i];
 	if (!path)
 	{	
 		while (env[i])
@@ -40,19 +40,6 @@ int	ft_cd(char **tokens, char **env)
 	}
 	else if (chdir(path) == -1)
 		printf("ESTO NO EXISTE\n");
+	ft_free_matrix(commands);
 	return (0);
 }
-
-		// ft_print_error(*tokens);
-	// else
-	// {
-	// 	i = 0;
-	// 	while (tokens[i])
-	// 	{
-	// 		path = ft_strjoin(path, tokens[i]);
-	// 		i++;
-	// 		if (tokens[i])
-	// 			path = ft_strjoin(path, " ");
-	// 		free(path);
-	// 	}
-	// }

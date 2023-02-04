@@ -6,7 +6,7 @@
 /*   By: psegura- <psegura-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/27 21:41:24 by davgarci          #+#    #+#             */
-/*   Updated: 2023/02/03 23:38:04 by psegura-         ###   ########.fr       */
+/*   Updated: 2023/02/04 21:12:05 by psegura-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,3 +72,14 @@ void piperrak(int i)
 			close(g_c.fd[READ_END]);
 	}
 }
+
+	//  ls | wc
+
+	// else
+	// {
+	// 	dup2(g_c.fd[READ_END], STDIN_FILENO);
+	// 	if (g_c.fd[WRITE_END] != STDIN_FILENO)
+	// 		close(g_c.fd[WRITE_END]);
+	// 	if (g_c.fd[READ_END] != STDOUT_FILENO)
+	// 		close(g_c.fd[READ_END]);
+	// }

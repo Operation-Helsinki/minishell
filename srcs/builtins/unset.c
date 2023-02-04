@@ -6,7 +6,7 @@
 /*   By: psegura- <psegura-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/12 21:02:08 by psegura-          #+#    #+#             */
-/*   Updated: 2023/02/01 01:40:27 by psegura-         ###   ########.fr       */
+/*   Updated: 2023/02/04 18:03:20 by psegura-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,5 +47,6 @@ int	ft_unset(char **env, char **args)
 		i++;
 	}
 	ft_free_matrix(env);
+	ft_free_matrix(args);
 	return (0);
 }
