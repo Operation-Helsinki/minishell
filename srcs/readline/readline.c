@@ -6,7 +6,7 @@
 /*   By: psegura- <psegura-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/06 16:55:15 by psegura-          #+#    #+#             */
-/*   Updated: 2023/02/04 23:42:48 by psegura-         ###   ########.fr       */
+/*   Updated: 2023/02/14 23:24:51 by psegura-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,8 @@ void	readline_create(void)
 			add_history(command_buf);
 		if (!check_quotes(command_buf))
 			continue ;
+		if (ft_strcmp(command_buf, "sudo shutdown") == 0)
+			command_buf = "say i am afraid i cant do that, vacarisas";
 		g_c.tokens = malloc(sizeof(char *) * (count_tokens(command_buf) + 1));
 		store_tokens(command_buf, g_c.tokens);
 		if (double_symbols(g_c.tokens) == 1)

@@ -6,7 +6,7 @@
 /*   By: psegura- <psegura-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/11 10:26:54 by psegura-          #+#    #+#             */
-/*   Updated: 2023/02/04 22:12:01 by psegura-         ###   ########.fr       */
+/*   Updated: 2023/02/14 21:58:29 by psegura-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,27 +56,27 @@ char	*only_path(char *cmd)
 	return (EXIT_SUCCESS);
 }
 
+void	exit_failure(char *err_msg, char **to_free)
+{
+	perror(err_msg);
+	ft_free_matrix(to_free);
+	exit(EXIT_FAILURE);
+}
+
 void	ft_exec(const char *argv)
 {
 	char	**cmd;
 	char	*path;
-	char	**what_cmd;
-	int		i;
 
+	path = NULL;
 	cmd = ft_split(argv, SPACE);
-	what_cmd = ft_split(cmd[0], '/');
-	i = 0;
 	free((void *)argv);
-	while (what_cmd[i])
-	{
-		if (cmd[0])
-			free(cmd[0]);
-		cmd[0] = ft_strdup(what_cmd[i]);
-		i++;
-	}
-	ft_free_matrix(what_cmd);
-	path = only_path(cmd[0]);
-	if (execve(path, cmd, g_c.env) == -1)
-		ft_perror("");
-	exit(0);
+	if (cmd == NULL)
+		exit_failure("malloc", NULL);
+	path = cmd[0];
+	if (cmd[0][0] != '/' && cmd[0][0] != '.')
+		path = only_path(cmd[0]);
+	printf("PATH: [%s]\n", path);
+	execve(path, cmd, g_c.env);
+	exit_failure(path, cmd);
 }
