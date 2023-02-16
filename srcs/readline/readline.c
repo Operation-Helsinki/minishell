@@ -6,7 +6,7 @@
 /*   By: psegura- <psegura-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/06 16:55:15 by psegura-          #+#    #+#             */
-/*   Updated: 2023/02/04 23:42:48 by psegura-         ###   ########.fr       */
+/*   Updated: 2023/02/16 09:13:40 by psegura-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,11 +35,11 @@ void	expand_while(void)
 
 void	readline_create(void)
 {
-	const char	*command_buf;
+	char	*command_buf;
 
 	while (1)
 	{
-		command_buf = ft_strtrim((const char *)readline(PROMPT), " ");
+		command_buf = ft_strtrim(readline(PROMPT), " ");
 		if (!command_buf)
 			exit(0);
 		if (!*command_buf)
@@ -57,6 +57,7 @@ void	readline_create(void)
 		g_c.tokens = tokens_to_pipas(g_c.tokens);
 		expand_while();
 		pipas_handler();
+		free(command_buf);
 		ft_free_matrix(g_c.tokens);
 	}
 }

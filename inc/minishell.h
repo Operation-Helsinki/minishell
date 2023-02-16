@@ -6,7 +6,7 @@
 /*   By: psegura- <psegura-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/05 20:41:16 by psegura-          #+#    #+#             */
-/*   Updated: 2023/02/04 21:13:31 by psegura-         ###   ########.fr       */
+/*   Updated: 2023/02/16 09:14:25 by psegura-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@
 
 /*__READLINE______*/
 # include "readline.h"
+void rl_replace_line (const char *text, int clear_undo);
 
 /*__TOKENIZER_____*/
 # include "tokenizer.h"

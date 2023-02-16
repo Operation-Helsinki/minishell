@@ -6,51 +6,44 @@
 /*   By: psegura- <psegura-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/04 23:37:32 by psegura-          #+#    #+#             */
-/*   Updated: 2023/02/04 23:41:33 by psegura-         ###   ########.fr       */
+/*   Updated: 2023/02/16 09:16:32 by psegura-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-void	handle_sig(int sig)
+void	signal_parent(int signal)
 {
-	if (sig == SIGINT)
+	if (signal == SIGINT)
 	{
-		g_c.dolar_q = 130;
-		ft_putstr_fd("\n\033[0;32m➜  \033[0;36mShellhinki \033[1;33m✗ \033[0m", 2);
+		write(1, "\n", 1);
 		rl_on_new_line();
-	}
-	else if (sig == SIGQUIT)
-		write(2, "\b\b  \b\b", 6);
-}
-
-void	sig_init(void)
-{
-	if (signal(SIGINT, handle_sig) == SIG_ERR)
-		exit(EXIT_FAILURE);
-	else if (signal(SIGQUIT, handle_sig) == SIG_ERR)
-		exit(EXIT_FAILURE);
-}
-
-void	execution_signal_hadler(int sig)
-{
-	if (sig == SIGINT)
-	{
-		free(g_c.tokens);
+		rl_replace_line("", 0);
+		rl_redisplay();
 		g_c.dolar_q = 130;
-		write(2, "\n", 1);
-	}
-	else if (sig == SIGQUIT)
-	{
-		g_c.dolar_q = 131;
-		ft_putstr_fd("Exit, bye\n", 2);
 	}
 }
 
-void	execution_signal_init(void)
+void	signal_heredoc(void)
 {
-	if (signal(SIGINT, execution_signal_hadler) == SIG_ERR)
-		exit(EXIT_FAILURE);
-	else if (signal(SIGQUIT, execution_signal_hadler) == SIG_ERR)
-		exit(EXIT_FAILURE);
+	signal(SIGINT, SIG_DFL);
+	signal(SIGQUIT, SIG_IGN);
+}
+
+void	signal_child(void)
+{
+	signal(SIGINT, SIG_DFL);
+	signal(SIGQUIT, SIG_DFL);
+}
+
+void	signal_ignore(void)
+{
+	signal(SIGINT, SIG_IGN);
+	signal(SIGQUIT, SIG_IGN);
+}
+
+void	manage_signal(void)
+{
+	signal(SIGINT, signal_parent);
+	signal(SIGQUIT, SIG_IGN);
 }

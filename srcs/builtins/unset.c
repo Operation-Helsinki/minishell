@@ -6,7 +6,7 @@
 /*   By: psegura- <psegura-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/12 21:02:08 by psegura-          #+#    #+#             */
-/*   Updated: 2023/02/04 18:03:20 by psegura-         ###   ########.fr       */
+/*   Updated: 2023/02/05 21:18:42 by psegura-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,6 @@ int	ft_unset(char **env, char **args)
 	{
 		if (check_syntax(args[i]) == 0)
 			return (printf("export: %s: not a valid identifier\n", args[i]));
-		printf("DELETE: [%s]\n", args[i]);
 		to_find = ft_strjoin(args[i], "=");
 		pos = ft_locate_str_in_matrix(g_c.env, to_find);
 		free(to_find);
@@ -50,3 +49,5 @@ int	ft_unset(char **env, char **args)
 	ft_free_matrix(args);
 	return (0);
 }
+
+		// printf("DELETE: [%s]\n", args[i]);

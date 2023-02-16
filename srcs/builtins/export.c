@@ -6,7 +6,7 @@
 /*   By: psegura- <psegura-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/12 21:02:04 by psegura-          #+#    #+#             */
-/*   Updated: 2023/02/04 23:32:30 by psegura-         ###   ########.fr       */
+/*   Updated: 2023/02/05 21:18:26 by psegura-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,6 @@ int	ft_export(char **env, char **args)
 	{
 		if (check_syntax(args[i]) == 0)
 			return (printf("export: %s: not a valid identifier\n", args[i]));
-		printf("TOKEN PA: [%s]\n", find_until_char(args[i], '='));
 		pos = ft_locate_str_in_matrix(g_c.env, find_until_char(args[i], '='));
 		g_c.env = ft_delete_row_matrix(g_c.env, pos);
 		temp = ft_add_row_matrix(g_c.env, args[i]);
@@ -85,3 +84,5 @@ int	ft_export(char **env, char **args)
 	ft_free_matrix(env);
 	return (0);
 }
+
+		// printf("TOKEN PA: [%s]\n", find_until_char(args[i], '='));

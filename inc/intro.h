@@ -6,7 +6,7 @@
 /*   By: psegura- <psegura-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/10 22:22:43 by psegura-          #+#    #+#             */
-/*   Updated: 2023/01/10 22:23:16 by psegura-         ###   ########.fr       */
+/*   Updated: 2023/02/16 00:09:17 by psegura-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 # include "minishell.h"
 
+/*___INTRO___*/
 void	ft_print_header(void);
 
 #endif

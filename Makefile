@@ -6,7 +6,7 @@
 #    By: psegura- <psegura-@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/06 16:12:27 by psegura-          #+#    #+#              #
-#    Updated: 2023/02/04 23:39:12 by psegura-         ###   ########.fr        #
+#    Updated: 2023/02/16 08:46:41 by psegura-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -33,7 +33,9 @@ SRCS =											\
 		srcs/tokenizer/utils.c					\
 												\
 		srcs/executor/find_command.c			\
+		srcs/executor/exec_cmd.c				\
 		srcs/executor/executor.c				\
+		srcs/executor/cmd_type.c				\
 												\
 		srcs/utils/errors.c						\
 		srcs/utils/environment.c				\
@@ -62,7 +64,7 @@ CC = gcc
 CFLAGS	 = -Wall -Wextra -Werror -g3 #-fsanitize=address
 CFLAGS	+= -I inc
 CFLAGS	+= -I libft
-READLINE = -lreadline
+READLINE = -lreadline -L /Users/$(USER)/.brew/opt/readline/lib -I /Users/$(USER)/.brew/opt/readline/include
 
 $(NAME): $(OBJS)
 	@make -C libft
