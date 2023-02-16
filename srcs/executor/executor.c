@@ -6,7 +6,7 @@
 /*   By: psegura- <psegura-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/27 21:41:24 by davgarci          #+#    #+#             */
-/*   Updated: 2023/02/04 22:49:32 by psegura-         ###   ########.fr       */
+/*   Updated: 2023/02/16 06:47:45 by psegura-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,12 +17,15 @@ void	pipas_handler(void)
 	int	i;
 	int	status;
 	int	pid;
+	int	type;
 
 	i = 0;
 	if (g_c.pipas == 0)
 	{
-		g_c.dolar_q = builtins(g_c.tokens[i]);
-		if (g_c.dolar_q == NONE)
+		type = what_cmd(g_c.tokens[i]);
+		if (type == BUILTIN)
+			g_c.dolar_q = builtins(g_c.tokens[i]);
+		else if (type == STDLIB)
 		{
 			pid = fork();
 			if (pid == 0)
@@ -30,6 +33,8 @@ void	pipas_handler(void)
 			waitpid(-1, &status, 0);
 			g_c.dolar_q = status;
 		}
+		else
+			cmd_not_found(g_c.tokens[i]);
 	}
 	else
 		return ;

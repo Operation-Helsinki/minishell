@@ -6,7 +6,7 @@
 /*   By: psegura- <psegura-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/11 10:26:54 by psegura-          #+#    #+#             */
-/*   Updated: 2023/02/14 21:58:29 by psegura-         ###   ########.fr       */
+/*   Updated: 2023/02/15 21:44:21 by psegura-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,31 +52,23 @@ char	*only_path(char *cmd)
 		i++;
 	}
 	ft_free_matrix(env_paths);
-	ft_perror(cmd);
 	return (EXIT_SUCCESS);
 }
 
-void	exit_failure(char *err_msg, char **to_free)
+void	exit_failure(char *err_msg, char **to_free, int flag)
 {
-	perror(err_msg);
+	if (flag == 1)
+		perror(err_msg);
 	ft_free_matrix(to_free);
 	exit(EXIT_FAILURE);
 }
 
-void	ft_exec(const char *argv)
+void	cmd_not_found(char *cmd)
 {
-	char	**cmd;
-	char	*path;
+	char	*error;
 
-	path = NULL;
-	cmd = ft_split(argv, SPACE);
-	free((void *)argv);
-	if (cmd == NULL)
-		exit_failure("malloc", NULL);
-	path = cmd[0];
-	if (cmd[0][0] != '/' && cmd[0][0] != '.')
-		path = only_path(cmd[0]);
-	printf("PATH: [%s]\n", path);
-	execve(path, cmd, g_c.env);
-	exit_failure(path, cmd);
+	error = ft_strjoin(cmd, ": command not found\n");
+	ft_putstr_fd(error, 2);
+	free(error);
+	g_c.dolar_q = CMD_NOT_FOUND;
 }

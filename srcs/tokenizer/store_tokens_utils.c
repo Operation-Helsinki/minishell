@@ -6,7 +6,7 @@
 /*   By: psegura- <psegura-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/27 18:34:15 by psegura-          #+#    #+#             */
-/*   Updated: 2023/01/27 18:35:32 by psegura-         ###   ########.fr       */
+/*   Updated: 2023/02/15 16:26:25 by psegura-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ void	if_char_is_symbol(const char *str, t_count *c, int *len)
 	}
 }
 
-int	count_tokens(const char *str)
+int	count_tokens(char *str)
 {
 	t_count	c;
 	int		len;

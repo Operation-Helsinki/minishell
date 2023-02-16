@@ -6,7 +6,7 @@
 /*   By: psegura- <psegura-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/12 20:22:05 by psegura-          #+#    #+#             */
-/*   Updated: 2023/02/02 22:48:28 by psegura-         ###   ########.fr       */
+/*   Updated: 2023/02/15 16:25:34 by psegura-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ typedef struct s_count {
 }	t_count;
 
 /*__STORE_TOKENS_UTILS____*/
-int		count_tokens(const char *str);
+int		count_tokens(char *str);
 void	main_while(const char *str, t_count *c);
 int		char_is_symbol(char letter, char *symbols);
 void	find_next_quote(const char *str, int *i, char quote);
@@ -42,7 +42,6 @@ int		check_quotes(const char *readline);
 
 /*__LOCATE_SYMBOLS____*/
 void	find_next_quote(const char *str, int *i, char quote);
-int		count_tokens(const char *str);
 void	store_tokens(const char *str, char **tokens);
 
 /*__TOKENS_TO_PIPAS____*/
