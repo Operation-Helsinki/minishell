@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: psegura- <psegura-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: davgarci <davgarci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/05 20:41:16 by psegura-          #+#    #+#             */
-/*   Updated: 2023/02/16 09:14:25 by psegura-         ###   ########.fr       */
+/*   Updated: 2023/02/22 19:39:20 by davgarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,16 @@ void rl_replace_line (const char *text, int clear_undo);
 # define READ_END	0
 # define WRITE_END	1
 
+typedef struct		s_pipe
+{
+	char			**pipe_parse;
+	int				pipe;
+	int				read;
+	int				fd[2];
+	struct s_pipe	*next;
+	struct s_pipe	*previous;
+}					t_pipe;
+
 typedef struct s_cosas {
 	char	**env;
 	char	**tokens;
@@ -53,8 +63,7 @@ typedef struct s_cosas {
 	int		pipas;
 	int		dolar_q;
 	int		fd[2];
-	int		pipe_prev[2];
-	int		pipe_current[2];
+	t_pipe			*pipe_list;
 }	t_cosas;
 
 t_cosas	g_c;

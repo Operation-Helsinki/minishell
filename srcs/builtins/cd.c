@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cd.c                                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: psegura- <psegura-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: davgarci <davgarci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/12 21:01:49 by psegura-          #+#    #+#             */
-/*   Updated: 2023/02/04 17:59:58 by psegura-         ###   ########.fr       */
+/*   Updated: 2023/02/18 18:58:02 by davgarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,10 @@ int	ft_cd(char **env, char **commands)
 		}
 	}
 	else if (chdir(path) == -1)
+	{
 		printf("ESTO NO EXISTE\n");
+		exit(EXIT_FAILURE);
+	}
 	ft_free_matrix(commands);
-	return (0);
+	return (EXIT_SUCCESS);
 }

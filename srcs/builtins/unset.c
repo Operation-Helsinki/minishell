@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   unset.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: psegura- <psegura-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: davgarci <davgarci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/12 21:02:08 by psegura-          #+#    #+#             */
-/*   Updated: 2023/02/05 21:18:42 by psegura-         ###   ########.fr       */
+/*   Updated: 2023/02/18 19:01:35 by davgarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ int	ft_unset(char **env, char **args)
 	while (args[i])
 	{
 		if (check_syntax(args[i]) == 0)
-			return (printf("export: %s: not a valid identifier\n", args[i]));
+			return (printf("export: %s: not a valid identifier\n", args[i]), 1);
 		to_find = ft_strjoin(args[i], "=");
 		pos = ft_locate_str_in_matrix(g_c.env, to_find);
 		free(to_find);
@@ -47,7 +47,7 @@ int	ft_unset(char **env, char **args)
 	}
 	ft_free_matrix(env);
 	ft_free_matrix(args);
-	return (0);
+	return (EXIT_SUCCESS);
 }
 
 		// printf("DELETE: [%s]\n", args[i]);

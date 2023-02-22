@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   pwd.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: psegura- <psegura-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: davgarci <davgarci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/12 21:02:06 by psegura-          #+#    #+#             */
-/*   Updated: 2023/02/04 17:52:58 by psegura-         ###   ########.fr       */
+/*   Updated: 2023/02/18 18:58:20 by davgarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,5 +22,5 @@ int	ft_pwd(char **commands)
 	ft_putchar_fd('\n', 1);
 	free(str_pwd);
 	ft_free_matrix(commands);
-	return (0);
+	return (EXIT_SUCCESS);
 }

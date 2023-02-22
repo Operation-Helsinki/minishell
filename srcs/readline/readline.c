@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   readline.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: psegura- <psegura-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: davgarci <davgarci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/06 16:55:15 by psegura-          #+#    #+#             */
-/*   Updated: 2023/02/16 09:13:40 by psegura-         ###   ########.fr       */
+/*   Updated: 2023/02/22 18:48:31 by davgarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,7 @@ void	readline_create(void)
 			continue ;
 		g_c.tokens = tokens_to_pipas(g_c.tokens);
 		expand_while();
+		//ft_print_matrix(g_c.tokens, "matrix");
 		pipas_handler();
 		free(command_buf);
 		ft_free_matrix(g_c.tokens);

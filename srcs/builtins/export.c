@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   export.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: psegura- <psegura-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: davgarci <davgarci@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/12 21:02:04 by psegura-          #+#    #+#             */
-/*   Updated: 2023/02/05 21:18:26 by psegura-         ###   ########.fr       */
+/*   Updated: 2023/02/18 18:59:06 by davgarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,7 +82,7 @@ int	ft_export(char **env, char **args)
 		i++;
 	}
 	ft_free_matrix(env);
-	return (0);
+	return (EXIT_SUCCESS);
 }
 
 		// printf("TOKEN PA: [%s]\n", find_until_char(args[i], '='));
